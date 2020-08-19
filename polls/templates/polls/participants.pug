@@ -1,0 +1,605 @@
+| {% load static %}
+-
+    incomeRequests = [
+        {
+            id: 0,
+            image: '/static/assets/user_icon_red.svg',
+            name: 'Иванов Сергей',
+            city: 'Якутск',
+            course: 'Программирование',
+            date: '15.06.20',
+        },
+        {
+            id: 1,
+            image: '/static/assets/user_icon_red.svg',
+            name: 'Cody Fisher',
+            city: 'Москва',
+            course: 'Дизайн',
+            date: '21.06.20'
+        },
+        {
+            id: 2,
+            image: '/static/assets/user_icon_red.svg',
+            name: 'Leslie Alexander',
+            city: 'Екатеринбург',
+            course: 'Философия',
+            date: '24.06.20'
+        },
+        {
+            id: 3,
+            image: '/static/assets/user_icon_red.svg',
+            name: 'Annette Black',
+            city: 'Челябинск',
+            course: 'История',
+            date: '25.06.20'
+        },
+        {
+            id: 4,
+            image: '/static/assets/user_icon_red.svg',
+            name: 'Devon Lane',
+            city: 'Хабаровск',
+            course: 'Психология',
+            date: '2.12.20',
+            averageScore: 4.5,
+            rank: 'Новичок (Beginner)',
+            group: 'АБ-46',
+            progresses: [
+                {
+                    name: 'Философия',
+                    now: 11,
+                    total: 45
+                },
+                {
+                    name: 'Философия',
+                    now: 11,
+                    total: 45
+                },
+                {
+                    name: 'Философия',
+                    now: 11,
+                    total: 45
+                }
+            ]
+        }
+    ]
+    acceptedRequests = [
+        {
+            id: 5,
+            image: '/static/assets/user_icon_red.svg',
+            name: 'Holly Heinrich',
+            city: 'Челябинск',
+            course: 'История',
+            group: 'ПР-01',
+            date: '30.06.20'
+        },
+        {
+            id: 6,
+            image: '/static/assets/user_icon_red.svg',
+            name: 'Devon Lane',
+            city: 'Хабаровск',
+            course: 'Психология',
+            group: 'ДЗ-02',
+            date: '30.06.20'
+        },
+        {
+            id: 7,
+            image: '/static/assets/user_icon_red.svg',
+            name: 'Annette Black',
+            city: 'Челябинск',
+            course: 'История',
+            group: 'ФЛ-30',
+            date: '30.06.20'
+        },
+        {
+            id: 8,
+            image: '/static/assets/user_icon_red.svg',
+            name: 'Devon Lane',
+            city: 'Хабаровск',
+            course: 'Психология',
+            group: 'ИС-12',
+            date: '30.06.20'
+        },
+        {
+            id: 9,
+            image: '/static/assets/user_icon_red.svg',
+            name: 'Annette Black',
+            city: 'Челябинск',
+            course: 'История',
+            group: 'ПС-03',
+            date: '30.06.20'
+        },
+        {
+            id: 10,
+            image: '/static/assets/user_icon_red.svg',
+            name: 'Devon Lane',
+            city: 'Хабаровск',
+            course: 'Программирование',
+            group: 'ПС-05',
+            date: '30.06.20'
+        }
+    ]
+    groups = [
+        {
+            id: 1,
+            name: "АБ-46",
+            city: "Саратов",
+            courses: [
+                'Психология',
+                'Программирование',
+                'Психология',
+                'Программирование',
+                'Психология',
+                'Программирование'
+            ],
+            date: "01.07.20"
+        },
+        {
+            id: 2,
+            name: "АБ-47",
+            city: "Якутск",
+            courses: [
+                'Дизайн',
+                'История',
+                'Философия'
+            ],
+            date: "30.05.20"
+        },
+        {
+            id: 3,
+            name: "АБ-48",
+            city: "Москва",
+            courses: [
+                'Программирование'
+            ],
+            date: "09.04.20"
+        },
+        {
+            id: 4,
+            name: "АБ-49",
+            city: "Екатеринбург",
+            courses: [],
+            date: "03.03.20"
+        },
+        {
+            id: 5,
+            name: "АБ-50",
+            city: "Челябинск",
+            courses: [],
+            date: "22.06.20"
+        },
+        {
+            id: 6,
+            name: "АБ-51",
+            city: "Уфа",
+            courses: [],
+            date: "21.06.20"
+        },
+        {
+            id: 7,
+            name: "АБ-52",
+            city: "Саратов",
+            courses: [],
+            date: "15.05.20"
+        },
+        {
+            id: 8,
+            name: "АБ-53",
+            city: "Саратов",
+            courses: [],
+            date: "03.04.20"
+        },
+        {
+            id: 9,
+            name: "АБ-54",
+            city: "Саратов",
+            courses: [],
+            date: "11.02.20"
+        }
+    ]
+    courses = [
+        {
+            id: 3,
+            name: "Философия"
+        },
+        {
+            id: 4,
+            name: "Информатика"
+        },
+        {
+            id: 5,
+            name: "История"
+        },
+        {
+            id: 6,
+            name: "Программирование"
+        },
+        {
+            id: 7,
+            name: "Дизайн"
+        }
+    ]
+    teachers = [
+        {
+            shortname: 'Иванов А.А.',
+        },
+        {
+            shortname: 'Алексей Алексеевич И.',
+        },
+        {
+            shortname: 'Иванов Алексей',
+        },
+        {
+            shortname: 'Алексей Алексеевич',
+        },
+        {
+            shortname: 'И.А.А.',
+        },
+        {
+            shortname: 'Иванов Алексей Алексеевич',
+        },
+        {
+            shortname: 'Алексей Алексеевич Иванов',
+        }
+    ]
+    chartData = {
+        requests: {
+            accepted: 86,
+            total: 98
+        },
+        directions: [
+            {
+                name: 'Программирование',
+                value: 4
+            },
+            {
+                name: 'Веб дизайн',
+                value: 1
+            },
+            {
+                name: 'История',
+                value: 2
+            },
+            {
+                name: 'Философия',
+                value: 3
+            }
+        ],
+    }
+
+    username = 'example-mail@gmail.com'
+    members_notification = 0
+    journal_notification = 0
+    balance = 1200
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        title Skillometer
+        meta(name="viewport" content="width=device-width")
+        link(rel="icon" type="image/png" href="{% static 'assets/favicon.png' %}")
+        link(rel="stylesheet" href="{% static 'styles/index.css' %}")
+        script(src="{% static 'scripts/icons.js' %}")
+    body
+        .container
+            .header
+                a.logo(href="https://skillometer.ru")
+                    img(src="{% static 'assets/logo.svg' %}")
+                .user-block
+                    img.notification-icon(src="{% static 'assets/notification_bell.svg' %}")
+                    a(href="/change_password/")
+                        img.user-icon(src="{% static 'assets/teacher_user_icon.svg' %}")
+                    .user-info
+                        .user-name=username
+                        .balance Баланс:&nbsp&nbsp&nbsp<b>#{balance || 0} ₽</b>
+
+        .panel
+            .panel-actions
+                a.panel-button(href="/quests/")
+                    img(src="{% static 'assets/icon_courses.svg' %}")
+                a.panel-button(href="/webinars/")
+                    img(src="{% static 'assets/icon_webinar.svg' %}")
+                a.panel-button(href="/organization/")
+                    img(src="{% static 'assets/icon_community.svg' %}")
+                a.panel-button.notification-holder.selected(href="/quest_members/")
+                    img(src="{% static 'assets/icon_users.svg' %}")
+                    if members_notification > 0
+                        .notification=members_notification
+                a.panel-button.notification-holder(href="/journal/")
+                    img(src="{% static 'assets/icon_board.svg' %}")
+                    if journal_notification > 0
+                        .notification=journal_notification
+            a.panel-button(href="/logout/")
+                img(src="{% static 'assets/icon_exit.svg' %}")
+
+        .center
+            .container
+                .content-window
+                    .content-header
+                    .Participants-main
+                        .content-title
+                            div Участники
+                        .content
+                            .column-1
+                                .date-picker-block
+                                    .title Выберите даты
+                                    .trailing
+                                        input.date-picker(type="date" value="2020-01-01" id="filter-begin-date")
+                                        input.date-picker(type="date" value="2020-12-31" id="filter-end-date")
+                                        button.filter-button(onclick="filterByDate()") Фильтр
+                                //div(id="react-component")
+                                .tabs-block(id="tabs")
+                                    .tab(id="tab-1")
+                                        button(onclick="tabsHandler(0)") Входящие заявки
+                                    .tab(id="tab-2")
+                                        button(onclick="tabsHandler(1)") Принятые заявки
+                                    .tab(id="tab-3")
+                                        button(onclick="tabsHandler(2)") Группы
+                                .search-filter-block
+                                    .search-block
+                                        input.search-tf(type="text" placeholder="Поиск по имени или email" oninput="requestSearchHandler(this)" id="participants-search")
+                                        button(onclick="")
+                                            img(src="{% static 'assets/search_icon.svg' %}")
+                                    .filter-block
+                                        button.filter.hidden(onclick="enrolModalWindow('show')" id="enrolButton") Зачислить
+                                        button.filter.hidden(onclick="dismissModalWindow('show')" id="dismissButton") Отчислить
+                                        button.filter(onclick="createGroup('show')" id="createGroupButton") Создать
+                                        button.filter.group-button.hidden(onclick="setCourse('show')" id="setCourseButton") Назначить курс
+                                        button.filter.group-button.hidden(onclick="deleteGroup('show')" id="deleteGroupButton") Удалить
+                                .main-block(id="fragment-1")
+                                    .sub-header
+                                        .order-block
+                                            div(style="padding-left: 51px") Имя Фамилия
+                                        .order-block
+                                            div Город
+                                            button(onclick="sortRequestsBy('city')")
+                                                img(src="{% static 'assets/arrow_down.svg' %}")
+                                        .order-block
+                                            div Курс
+                                            button(onclick="sortRequestsBy('course')")
+                                                img(src="{% static 'assets/arrow_down.svg' %}")
+                                        .order-block
+                                            div Дата
+                                            button(onclick="sortRequestsBy('date')")
+                                                img(src="{% static 'assets/arrow_down.svg' %}")
+                                        div Детали
+                                    .cards-wrapper
+                                        each student, index in incomeRequests
+                                            .student-card(id=`request-${student.id}` onclick=`selectRequest('${student.id}')`)
+                                                .student-block
+                                                    .student-icon
+                                                        img(src=student.image)
+                                                    .student-name=student.name
+                                                div=student.city
+                                                div=student.course
+                                                div=student.date
+                                                button(onclick=`studentDetailPopup(this, 'show', ${student.id})`)
+                                                    img(src="{% static 'assets/arrow_right.svg' %}")
+                                .main-block(id="fragment-2")
+                                    .sub-header.second-header
+                                        .order-block
+                                            div(style="padding-left: 51px") Имя Фамилия
+                                        .order-block
+                                            div Город
+                                            button(onclick="sortAcceptedRequestsBy('city')")
+                                                img(src="{% static 'assets/arrow_down.svg' %}")
+                                        .order-block
+                                            div Курс
+                                            button(onclick="sortAcceptedRequestsBy('course')")
+                                                img(src="{% static 'assets/arrow_down.svg' %}")
+                                        .order-block
+                                            div Группа
+                                            button(onclick="sortAcceptedRequestsBy('group')")
+                                                img(src="{% static 'assets/arrow_down.svg' %}")
+                                        .order-block
+                                            div Дата
+                                            button(onclick="sortAcceptedRequestsBy('date')")
+                                                img(src="{% static 'assets/arrow_down.svg' %}")
+                                        div Детали
+                                    .cards-wrapper
+                                        each student in acceptedRequests
+                                            .student-card.second-page(id=`accept-${student.id}` onclick=`selectAcceptedRequest('${student.id}')`)
+                                                .student-block
+                                                    .student-icon
+                                                        img(src=student.image)
+                                                    .student-name=student.name
+                                                div=student.city
+                                                div=student.course
+                                                div=student.group
+                                                div=student.date
+                                                button(onclick="")
+                                                    img(src="{% static 'assets/arrow_right.svg' %}")
+                                .main-block(id="fragment-3")
+                                    .sub-header.third-header
+                                        .order-block
+                                            div(style="padding-left: 51px") Группа
+                                        .order-block
+                                            div Город
+                                            button(onclick="sortAcceptedRequestsBy('city')")
+                                                img(src="{% static 'assets/arrow_down.svg' %}")
+                                        .order-block
+                                            div Курс
+                                            button(onclick="sortAcceptedRequestsBy('course')")
+                                                img(src="{% static 'assets/arrow_down.svg' %}")
+                                        .order-block
+                                            div Дата
+                                            button(onclick="sortAcceptedRequestsBy('date')")
+                                                img(src="{% static 'assets/arrow_down.svg' %}")
+                                        div Детали
+                                    .cards-wrapper
+                                        each group in groups
+                                            .student-card.third-page(id=`group-${group.id}` onclick=`selectGroup('${group.id}')`)
+                                                .student-block
+                                                    .student-icon
+                                                        img(src="{% static 'assets/group_icon.svg' %}")
+                                                    .student-name=group.name
+                                                div=group.city
+                                                .courses-row
+                                                    each course in group.courses
+                                                        .course-colored
+                                                            .course-title=course
+                                                            button(onclick=`removeCourseForGroup("${course}", "group-${group.id}", this)`)
+                                                                img(src="{% static 'assets/course_x.svg' %}")
+                                                div=group.date
+                                                button(onclick="")
+                                                    img(src="{% static 'assets/arrow_right.svg' %}")
+                            .column-2
+                                if chartData !== undefined
+                                    .requests-card
+                                        .left
+                                            .title Принято входящих заявок за месяц
+                                            .description
+                                                p <b>#{chartData.requests.accepted}</b> / #{chartData.requests.total}
+                                        .right-canvas-wrapper
+                                            canvas(width=100 height=100 id="participants-requests-chart")
+                                            .sign= (chartData.requests.accepted / chartData.requests.total * 100).toFixed(0) + '%'
+                                    .directions-card
+                                        .title Направления обучения
+                                        .chart-wrapper
+                                            canvas(width=260 height=260 id="participants-directions-chart")
+                                            .sign %
+                        .enrolModalWindow.hidden
+                            .wrapper
+                                .row
+                                    .title Выберите курс
+                                    input(type="text" id="course-choose-input")
+                                    .popup-list.course-choose.hidden
+                                        each course in courses
+                                            button.list-item(onclick=`enrolModalWindow('pick-course', '${course.name}')`)=course.name
+                                    button.input-button.course(onclick="enrolModalWindow('toggle-courses')")
+                                        img(src="{% static 'assets/arrow_down.svg' %}")
+                                .row
+                                    .title Выберите группу
+                                    input(type="text" id="group-choose-input")
+                                    .popup-list.group-choose.hidden
+                                        each group in groups
+                                            button.list-item(onclick=`enrolModalWindow('pick-group', '${group.name}')`)=group.name
+                                    button.input-button.group(onclick="enrolModalWindow('toggle-groups')")
+                                        img(src="{% static 'assets/arrow_down.svg' %}")
+                                .row
+                                    .title Выберите преподавателя
+                                    input(type="text" id="teacher-choose-input")
+                                    .popup-list.teacher-choose.hidden
+                                        each teacher in teachers
+                                            button.list-item(onclick=`enrolModalWindow('pick-teacher', '${teacher.shortname}')`)=teacher.shortname
+                                    button.input-button.teacher(onclick="enrolModalWindow('toggle-teachers')")
+                                        img(src="{% static 'assets/arrow_down.svg' %}")
+                                .buttons-block
+                                    button(onclick="enrolModalWindow('perform')") Готово
+                                    button.cancel(onclick="enrolModalWindow('cancel')") Отмена
+                        .dismissModalWindow.hidden
+                            .wrapper
+                                .title(id="delete-question") Удалить записи?
+                                .buttons-block
+                                    button(onclick="dismissModalWindow('perform')") Готово
+                                    button.cancel(onclick="dismissModalWindow('cancel')") Отмена
+
+
+
+                        .deleteGroupModalWindow.hidden
+                            .wrapper
+                                .title(id="delete-group") Удалить группу?
+                                .buttons-block
+                                    button(onclick="deleteGroup('perform')") Готово
+                                    button.cancel(onclick="deleteGroup('cancel')") Отмена
+
+
+
+                        .setCourseModalWindow.hidden
+                            .YourCourses.wrapper
+                                .sub-header
+                                    div Выберите курс
+                                    .filter-block
+                                        .filter-name(id="current-filter")
+                                        button.filter-button(onclick="sortYourCourses()" id="courses-sort-btn")
+                                            img(src="{% static 'assets/your_courses_arrow_white.svg' %}")
+                                        button.filter-button.hidden(onclick="cancelCoursesFilter()" id="courses-filter-btn")
+                                            img(src="{% static 'assets/your_courses_close_x.svg' %}")
+                                .courses-item(id=`course-assign-${3}`)
+                                    .course-name Философия
+                                    .controls
+                                        .stars-block
+                                            .active-star
+                                                img(src="{% static 'assets/star_icon_black.svg' %}")
+                                            div
+                                                img(src="{% static 'assets/star_icon_black.svg' %}")
+                                            div
+                                                img(src="{% static 'assets/star_icon_black.svg' %}")
+                                            div
+                                                img(src="{% static 'assets/star_icon_black.svg' %}")
+                                            div
+                                                img(src="{% static 'assets/star_icon_black.svg' %}")
+                                        input.course-checkbox(onclick="setCourse('select', this)" type="checkbox")
+                                .courses-item(id=`course-assign-${4}`)
+                                    .course-name Философия
+                                    .controls
+                                        .stars-block
+                                            .active-star
+                                                img(src="{% static 'assets/star_icon_black.svg' %}")
+                                            .active-star
+                                                img(src="{% static 'assets/star_icon_black.svg' %}")
+                                            .active-star
+                                                img(src="{% static 'assets/star_icon_black.svg' %}")
+                                            .active-star
+                                                img(src="{% static 'assets/star_icon_black.svg' %}")
+                                            .active-star
+                                                img(src="{% static 'assets/star_icon_black.svg' %}")
+                                        input.course-checkbox(onclick="setCourse('select', this)" type="checkbox")
+
+                                button.done-button(onclick="setCourse('perform')") Готово
+                        .createGroupModalWindow.hidden
+                            .wrapper
+                                .row
+                                    .title Наименование
+                                    input(type="text" id="group-name-input")
+                                .row
+                                    .title Город
+                                    input(type="text" id="group-city-input")
+                                .buttons-block
+                                    button(onclick="createGroup('perform')") Готово
+                                    button.cancel(onclick="createGroup('cancel')") Отмена
+                        .profileView.hidden
+                            .wrapper
+                                .row
+                                    img.profile-image(src="{% static 'assets/student_icon.svg' %}")
+                                    .right
+                                        .student-name _________________
+                                        .row
+                                            img.rank-image(src="{% static 'assets/beginner_icon.svg' %}")
+                                            .column
+                                                .rank _______
+                                                .group _______
+                                .bottom
+                                    .average-score
+                                        div Средний балл
+                                        .name _
+                                    .progress
+                                        div Прогресс
+                                        .line
+                                    .progress-bars
+                                        //.row-progress
+                                        //    div Дизайн
+                                        //    .column-progress
+                                        //        div 11 из 45
+                                        //        .progress-bar-background
+                                        //            .progress-bar(style=`background: #FF455D; width: ${11 / 45 * 100}%`)
+                                        //.row-progress
+                                        //    div Философия
+                                        //    .column-progress
+                                        //        div 8 из 35
+                                        //        .progress-bar-background
+                                        //            .progress-bar(style=`background: #FE9844; width: ${8 / 35 * 100}%`)
+                                        //.row-progress
+                                        //    div Программирование
+                                        //    .column-progress
+                                        //        div 16 из 45
+                                        //        .progress-bar-background
+                                        //            .progress-bar(style=`background: #BB7CF5; width: ${16 / 45 * 100}%`)
+
+
+                                button.close-button(onclick="studentDetailPopup(this, 'close')")
+                                    img(src="{% static 'assets/course_x.svg' %}")
+        script(type="text/javascript").
+            let chartData = !{JSON.stringify(chartData)}
+            let incomeRequests = !{JSON.stringify(incomeRequests)}
+            let acceptedRequests = !{JSON.stringify(acceptedRequests)}
+        script(src="{% static 'scripts/participants.js' %}")
+        script(src="{% static 'scripts/index.js' %}")

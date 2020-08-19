@@ -1,0 +1,129 @@
+| {% load static %}
+-
+    directions = ['Естественно-научные', 'Инженерные и ИТ', 'Предпринимательские', 'Социально-общественные', 'Творчество', 'Физкультурно-спортивные', 'Языковые']
+    ageGroupsString = ['Для школьников', 'Для взрослых']
+    availableAddresses = [
+        'Адрес №1',
+        'Адрес №2',
+        'Адрес №3'
+    ]
+    dataForEditing = {
+        /*
+        direction: 'Инженерные и ИТ',
+        tag: '#someTag',f
+        name: 'Rocket science',
+        ageGroupString: 'Для школьников',
+        ageGroup: '10-12',
+        description: 'Какок то описание',
+        beginDate: '2020-09-25',
+        endDate: '2020-10-10',
+        address: 'Адрес №2',
+        image: 'current_image.png'
+         */
+    }
+
+    username = 'example-mail@gmail.com'
+    members_notification = 0
+    journal_notification = 0
+    balance = 1200
+
+html(lang="ru")
+
+head
+    meta(charset="UTF-8")
+    title Skillometer
+    meta(name="viewport" content="width=device-width")
+    link(rel="icon" type="image/png" href="{% static 'assets/favicon.png' %}")
+    link(rel="stylesheet" href="{% static 'styles/index.css' %}")
+    script(src="{% static 'scripts/icons.js' %}" type="text/javascript" charset="utf-8")
+body
+    .container
+        .header
+            a.logo(href="https://skillometer.ru")
+                img(src="{% static 'assets/logo.svg' %}")
+            .user-block
+                img.notification-icon(src="{% static 'assets/notification_bell.svg' %}")
+                a(href="/change_password/")
+                    img.user-icon(src="{% static 'assets/teacher_user_icon.svg' %}")
+                .user-info
+                    .user-name=username
+                    .balance Баланс:&nbsp&nbsp&nbsp<b>#{balance || 0} ₽</b>
+    .panel
+        .panel-actions
+            a.panel-button.selected(href="/quests/")
+                img(src="{% static 'assets/icon_courses.svg' %}")
+            a.panel-button(href="/webinars/")
+                img(src="{% static 'assets/icon_webinar.svg' %}")
+            a.panel-button(href="/organization/")
+                img(src="{% static 'assets/icon_community.svg' %}")
+            a.panel-button.notification-holder(href="/quest_members/")
+                img(src="{% static 'assets/icon_users.svg' %}")
+                if members_notification > 0
+                    .notification=members_notification
+            a.panel-button.notification-holder(href="/journal/")
+                img(src="{% static 'assets/icon_board.svg' %}")
+                if journal_notification > 0
+                    .notification=journal_notification
+        a.panel-button(href="/logout/")
+            img(src="{% static 'assets/icon_exit.svg' %}")
+    .center
+        .container
+            .content-window
+                .content-header
+                .Courses-edit
+                    .content-title
+                        div Курсы
+                    .form-block
+                        .column-1
+                            .row
+                                img.direction-icon.hidden(src="{% static 'assets/direction_icon_1.svg' %}")
+                                input(type="text" placeholder="Выберите направление деятельности" id="dropdownTF" readonly value=dataForEditing.direction || '')
+                                button.dropdown-button(onClick="toggleDropdown('courses1')" id="dropdownButton")
+                                    img(src="{% static 'assets/dropdown_icon_down.svg' %}")
+                                .dropdown-list-closed(id="dropdownList")
+                                    div Выберите направление деятельности
+                                    each value, index in directions
+                                        button.dropdown-item(onClick=`selectDropdownItem(${index}, '${value}', 'courses1')`)=value
+
+                            input(type="text" placeholder="Ключевое слово, отражающее скилл (тэг):" id="tagTF" value=dataForEditing.tag || '')
+                            input(type="text" placeholder="Название" id="nameTF" value=dataForEditing.name || '')
+                            .age-block
+                                .row
+                                    img.direction-icon(src="")
+                                    input(type="text" placeholder="Возрастная группа" id="ageDropdownTF" readonly value=dataForEditing.ageGroupString || '')
+                                    button.dropdown-button(onClick="toggleDropdown('courses2')" id="ageDropdownButton")
+                                        img(src="{% static 'assets/dropdown_icon_down.svg' %}")
+                                    .dropdown-list-closed(id="ageDropdownList")
+                                        div Возрастная группа
+                                        each value, index in ageGroupsString
+                                            button.dropdown-item(onClick=`selectDropdownItem(${index}, '${value}', 'courses2')`)=value
+                                input.age-group(type="text" placeholder="15-17" id="ageTF" value=dataForEditing.ageGroup || '')
+                            textarea(type="text" placeholder="Описание" id="descriptionTF")=dataForEditing.description || ''
+                        .column-2
+                            div
+                                .date-picker-block
+                                    .date-picker-label Дата начала
+                                    input.date-picker(type="date" placeholder="дд.мм.гггг" id="begin-date" value=dataForEditing.beginDate || '')
+                                .date-picker-block
+                                    .date-picker-label Дата окончания
+                                    input.date-picker(type="date" placeholder="дд.мм.гггг" id="end-date" value=dataForEditing.endDate || '')
+                                .row
+                                    img.direction-icon(src="")
+                                    input(type="text" placeholder="Адрес" id="addressDropdownTF" value=dataForEditing.address || '')
+                                    button.dropdown-button(onClick="toggleDropdown('courses3')" id="addressDropdownButton")
+                                        img(src="{% static 'assets/dropdown_icon_down.svg' %}")
+                                    .dropdown-list-closed(id="addressDropdownList")
+                                        div Выберите адрес
+                                        each address, index in availableAddresses
+                                            button.dropdown-item(onClick=`selectDropdownItem(${index}, '${address}', 'courses3')`)=address
+                                img.hidden(id="selected-image" src="")
+                                .image-picker-block
+                                    button.gray-button(onclick="openFileInput()") Выберите изображение
+                                    .img-name=dataForEditing.image || ''
+                                    input.hidden(type="file" multiple=false accept="image/png, image/jpeg, image/gif" id="image-input")
+                            div
+                                button.red-button(onclick="submitNewCourse()") Далее
+                                button.gray-button Назад
+
+script(src="{% static 'scripts/courses_edit.js' %}")
+script(src="{% static 'scripts/index.js' %}")

@@ -1,0 +1,73 @@
+| {% load static %}
+-
+    username = 'example-mail@gmail.com'
+    members_notification = 0
+    journal_notification = 0
+    balance = 1200
+
+html(lang="ru")
+head
+    meta(charset="UTF-8")
+    title Skillometer
+    meta(name="viewport" content="width=device-width")
+    link(rel="icon" type="image/png" href="{% static 'assets/favicon.png' %}")
+    link(rel="stylesheet" href="{% static 'styles/index.css' %}")
+    script(src="{% static 'scripts/icons.js' %}")
+body
+    .container
+        .header
+            a.logo(href="https://skillometer.ru")
+                img(src="{% static 'assets/logo.svg' %}")
+            .user-block
+                img.notification-icon(src="{% static 'assets/notification_bell.svg' %}")
+                a(href="/change_password/")
+                    img.user-icon(src="{% static 'assets/teacher_user_icon.svg' %}")
+                .user-info
+                    .user-name=username
+                    .balance Баланс:&nbsp&nbsp&nbsp<b>#{balance || 0} ₽</b>
+    .panel
+        .panel-actions
+            a.panel-button.selected(href="/quests/")
+                img(src="{% static 'assets/icon_courses.svg' %}")
+            a.panel-button(href="/webinars/")
+                img(src="{% static 'assets/icon_webinar.svg' %}")
+            a.panel-button(href="/organization/")
+                img(src="{% static 'assets/icon_community.svg' %}")
+            a.panel-button.notification-holder(href="/quest_members/")
+                img(src="{% static 'assets/icon_users.svg' %}")
+                if members_notification > 0
+                    .notification=members_notification
+            a.panel-button.notification-holder(href="/journal/")
+                img(src="{% static 'assets/icon_board.svg' %}")
+                if journal_notification > 0
+                    .notification=journal_notification
+        a.panel-button(href="/logout/")
+            img(src="{% static 'assets/icon_exit.svg' %}")
+    .center
+        .container
+            .content-window
+                .content-header
+                .Courses-upload-files
+                    .content-title
+                        div Курсы
+                        //button.round(onclick="")
+                        //    img(src="{% static 'assets/plus.svg' %}" alt="")
+                    .files-upload-block
+                        .uploaded-content
+                        .column
+                            .buttons-block
+                                button.square-button
+                                    img(onclick="" src="{% static 'assets/square_button_1.svg' %}" alt="")
+                                button.square-button
+                                    img(onclick="" src="{% static 'assets/square_button_2.svg' %}" alt="")
+                                button.square-button
+                                    img(onclick="" src="{% static 'assets/square_button_3.svg' %}" alt="")
+                                button.square-button
+                                    img(onclick="" src="{% static 'assets/square_button_4.svg' %}" alt="")
+                            .bottom-buttons-block
+                                button.red-button Готово
+                                button.gray-button Отмена
+
+script(src="{% static 'scripts/courses.js' %}")
+script(src="{% static 'scripts/courses_edit.js' %}")
+script(src="{% static 'scripts/index.js' %}")

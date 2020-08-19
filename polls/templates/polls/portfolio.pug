@@ -1,0 +1,97 @@
+| {% load static %}
+-
+    username = 'example-mail@gmail.com'
+    members_notification = 0
+    journal_notification = 0
+    balance = 1200
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        title Skillometer
+        meta(name="viewport" content="width=device-width")
+        link(rel="icon" type="image/png" href="{% static 'assets/favicon.png' %}")
+        link(rel="stylesheet" href="{% static 'styles/index.css' %}")
+        script(src="{% static 'scripts/icons.js' %}")
+    body
+        .container
+            .header
+                a.logo(href="https://skillometer.ru")
+                    img(src="{% static 'assets/logo.svg' %}")
+                .user-block
+                    img.notification-icon(src="{% static 'assets/notification_bell.svg' %}")
+                    a(href="/change_password/")
+                        img.user-icon(src="{% static 'assets/teacher_user_icon.svg' %}")
+                    .user-info
+                        .user-name=username
+                        .balance Баланс:&nbsp&nbsp&nbsp<b>#{balance || 0} ₽</b>
+
+        .panel
+            .panel-actions
+                a.panel-button(href="/quests/")
+                    img(src="{% static 'assets/icon_courses.svg' %}")
+                a.panel-button(href="/webinars/")
+                    img(src="{% static 'assets/icon_webinar.svg' %}")
+                a.panel-button(href="/organization/")
+                    img(src="{% static 'assets/icon_community.svg' %}")
+                a.panel-button.notification-holder(href="/quest_members/")
+                    img(src="{% static 'assets/icon_users.svg' %}")
+                    if members_notification > 0
+                        .notification=members_notification
+                a.panel-button.notification-holder(href="/journal/")
+                    img(src="{% static 'assets/icon_board.svg' %}")
+                    if journal_notification > 0
+                        .notification=journal_notification
+            a.panel-button(href="/logout/")
+                img(src="{% static 'assets/icon_exit.svg' %}")
+        .center
+            .container
+                .content-window
+                    .content-header
+                    .Portfolio
+                        .content-title
+                            div Портфолио
+                        .exam-block
+                            .sub-header
+                                .title
+                                    img(src="{% static 'assets/portfolio_image.png' %}")
+                                    div
+                                        p Сергей Иванович
+                                        p Петров
+                                .timing-score-block
+                                    .duration-button
+                                        img(src="{% static 'assets/clock_small.svg' %}" alt="")
+                                        div стаж 3 года
+                                    .passing-score=`Был на сайте 2 часа назад`
+                            .small-cards-block
+                                .small-card
+                                    img(src="{% static 'assets/portfolio_icon_1.svg' %}" alt="")
+                                    .col
+                                        p Текущих курсов
+                                        b(id='total-students') 5
+                                .small-card
+                                    img(src="{% static 'assets/portfolio_icon_2.svg' %}" alt="")
+                                    .col
+                                        p Текущий рейтинг
+                                        b(id='average-score') 48
+                                .small-card
+                                    img(src="{% static 'assets/portfolio_icon_3.svg' %}" alt="")
+                                    .col
+                                        p Участие в конкурсах
+                                        b(id='not-passed-students') 10
+                                .small-card
+                                    img(src="{% static 'assets/portfolio_icon_4.svg' %}" alt="")
+                                    .col
+                                        p Разработано курсов
+                                        b(id='turned-out-students') 3
+                                .small-card
+                                    img(src="{% static 'assets/portfolio_icon_5.svg' %}" alt="")
+                                    .col
+                                        p Награды
+                                        b(id='total-passed-students') 5
+                                .small-card
+                                    img(src="{% static 'assets/portfolio_icon_6.svg' %}" alt="")
+                                    .col
+                                        p Курсы повышения квалификации
+                                        b(id='total-failed-students') 6
+
+        script(src="{% static 'scripts/index.js' %}")

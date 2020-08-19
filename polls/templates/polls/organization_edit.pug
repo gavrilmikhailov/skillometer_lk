@@ -1,0 +1,229 @@
+| {% load static %}
+-
+    organizationForms = [
+        'Учреждение',
+        'Индивидуальный предприниматель',
+        'Автономная некоммерческая организация',
+        'Общество с ограниченной ответственностью',
+        'Фонд',
+        'Полное товарищество',
+        'Товарищество на вере',
+        'Публичное акционерное общество',
+        'Непубличное акционерное общество',
+        'Унитарное предприятие, основанное на праве хозяйственного ведения',
+        'Унитарное предприятие, основанное на праве оперативного управления',
+        'Производственный коллектив',
+        'Потребительнский коллектив',
+        'Государственная корпорация',
+        'Некоммерческая корпорация',
+        'Прочая форма'
+    ]
+    workForms = [
+        'Образовательная организация',
+        'Организация, осуществляющая обучение',
+        'ИП, оказывающий услуги с наймом работников',
+        'ИП, оказывающий услуги без найма работников'
+    ]
+    dataForEditing = {
+        /*
+        INN: '17238912',
+        fullName: 'Quick brown fox jumped over the lazy dog',
+        shortName: 'Quick brown fox',
+        organizationForm: 'Quick brown organization form',
+        workForm: 'Quick brown work form',
+        chief: 'Quick brown CEO',
+        city: 'Yakutsk',
+        street: 'pr. Mira',
+        house: '52',
+        cabinet: '512',
+        addresses: [
+            '303 S Jackson St Seattle, WA 98104',
+            'Новосибирск, улица Державина, 47',
+            '中国北京市'
+        ],
+        phones: [
+            '+1 (206) 684-7171',
+            '+7 (962) 684-7172',
+            '+1 (206) 684-7173'
+        ],
+        sites: [
+            'https://example.com',
+            'http://second.net'
+        ],
+        mails: [
+            'example@gmail.com',
+            'something@yandex.ru'
+        ]
+        */
+    }
+
+    username = 'example-mail@gmail.com'
+    members_notification = 0
+    journal_notification = 0
+    balance = 1200
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        title Skillometer
+        meta(name="viewport" content="width=device-width")
+        link(rel="icon" type="image/png" href="{% static 'assets/favicon.png' %}")
+        link(rel="stylesheet" href="{% static 'styles/index.css' %}")
+        script(src="{% static 'scripts/icons.js' %}")
+    body
+        .container
+            .header
+                a.logo(href="https://skillometer.ru")
+                    img(src="{% static 'assets/logo.svg' %}")
+                .user-block
+                    img.notification-icon(src="{% static 'assets/notification_bell.svg' %}")
+                    a(href="/change_password/")
+                        img.user-icon(src="{% static 'assets/teacher_user_icon.svg' %}")
+                    .user-info
+                        .user-name=username
+                        .balance Баланс:&nbsp&nbsp&nbsp<b>#{balance || 0} ₽</b>
+
+        .panel
+            .panel-actions
+                a.panel-button(href="/quests/")
+                    img(src="{% static 'assets/icon_courses.svg' %}")
+                a.panel-button(href="/webinars/")
+                    img(src="{% static 'assets/icon_webinar.svg' %}")
+                a.panel-button.selected(href="/organization/")
+                    img(src="{% static 'assets/icon_community.svg' %}")
+                a.panel-button.notification-holder(href="/quest_members/")
+                    img(src="{% static 'assets/icon_users.svg' %}")
+                    if members_notification > 0
+                        .notification=members_notification
+                a.panel-button.notification-holder(href="/journal/")
+                    img(src="{% static 'assets/icon_board.svg' %}")
+                    if journal_notification > 0
+                        .notification=journal_notification
+            a.panel-button(href="/logout/")
+                img(src="{% static 'assets/icon_exit.svg' %}")
+        .center
+    .container
+        .content-window
+            .content-header
+            .Organization-form
+                .content-title
+                    div Организация
+                .form-block
+                    .column-1
+                        input(type="text" tag="inn" placeholder="ИНН" value=dataForEditing.INN || '')
+                        input(type="text" tag="full-name" placeholder="Полное наименование" value=dataForEditing.fullName || '')
+                        input(type="text" tag="short-name" placeholder="Сокращенное наименование (общепринятое)" value=dataForEditing.shortName || '')
+                        .row(style="z-index: 12")
+                            input(type="text" tag="org-form" placeholder="Организационно-правовая форма" id="org1TF" readonly value=dataForEditing.organizationForm || '')
+                            button.dropdown-button(onClick="toggleDropdown('org1')" id="org1DropdownButton")
+                                img(src="{% static 'assets/dropdown_icon_down.svg' %}" alt="")
+                            .dropdown-list-closed(id="org1DropdownList")
+                                div Организационно-правовая форма
+                                each value, index in organizationForms
+                                    button.dropdown-item(onClick=`selectDropdownItem(${index}, '${value}', 'org1')`)=value
+                        .row
+                            input(type="text" tag="work-form" placeholder="Тип деятельности" id="org2TF" readonly value=dataForEditing.workForm || '')
+                            button.dropdown-button(onClick="toggleDropdown('org2')" id="org2DropdownButton")
+                                img(src="{% static 'assets/dropdown_icon_down.svg' %}")
+                            .dropdown-list-closed(id="org2DropdownList")
+                                div Выберите Ваш тип деятельности
+                                each value, index in workForms
+                                    button.dropdown-item(onClick=`selectDropdownItem(${index}, '${value}', 'org2')`)=value
+                        input(type="text" tag="chief" placeholder="Руководитель" value=dataForEditing.chief || '')
+                    .column-2
+                        .top-inputs-org
+                            input(type="text" tag="city" placeholder="Город (юридический адрес)" value=dataForEditing.city || '')
+                            input(type="text" tag="street" placeholder="Улица (юридический адрес)" value=dataForEditing.street || '')
+                            input(type="text" tag="house" placeholder="Дом (юридический адрес)" value=dataForEditing.house || '')
+                            input(type="text" tag="cabinet" placeholder="Кабинет (необязательно)" value=dataForEditing.cabinet || '')
+
+                            .new-rows-block(id="new-address-block")
+                                div Добавить адрес (необязательно)
+                                button.round(onclick="addressModal('show')")
+                                    img(src="{% static 'assets/plus.svg' %}")
+                            each address in (dataForEditing.addresses || [])
+                                .input-wrapper
+                                    input(type="text" tag="address" readonly value=address || '')
+                                    button.delete-button.center(onclick='addressModal("delete", this)')
+                                        img(src="{% static 'assets/close_x.svg' %}")
+
+                            .new-rows-block(id="new-phone-block")
+                                div Добавить номер телефона (необязательно)
+                                button.round(onclick="phoneModal('show')")
+                                    img(src="{% static 'assets/plus.svg' %}")
+                            each phone in (dataForEditing.phones || [])
+                                .input-wrapper
+                                    input(type="text" tag="phone" readonly value=phone || '')
+                                    button.delete-button.center(onclick='phoneModal("delete", this)')
+                                        img(src="{% static 'assets/close_x.svg' %}")
+
+                            .new-rows-block(id="new-site-block")
+                                div Добавить сайт, соц. сеть (необязательно)
+                                button.round(onclick="siteModal('show')")
+                                    img(src="{% static 'assets/plus.svg' %}")
+                            each site in (dataForEditing.sites || [])
+                                .input-wrapper
+                                    input(type="text" tag="site" readonly value=site || '')
+                                    button.delete-button.center(onclick='siteModal("delete", this)')
+                                        img(src="{% static 'assets/close_x.svg' %}")
+
+                            .new-rows-block(id="new-mail-block")
+                                div Добавить электронную почту (необязательно)
+                                button.round(onclick="mailModal('show')")
+                                    img(src="{% static 'assets/plus.svg' %}")
+                            each mail in (dataForEditing.mails || [])
+                                .input-wrapper
+                                    input(type="text" tag="mail" readonly value=mail || '')
+                                    button.delete-button.center(onclick='mailModal("delete", this)')
+                                        img(src="{% static 'assets/close_x.svg' %}")
+                        div
+                            button.red-button(onclick="submitForm()") Сохранить
+                            //if dataForEditing !== undefined
+                            //    button.gray-button(onclick="cancelEditing()") Отмена
+                .address-modal.hidden
+                    .wrapper
+                        .row
+                            .title Город
+                            input(type="text" id="address-city-input")
+                        .row
+                            .title Улица
+                            input(type="text" id="address-street-input")
+                        .row
+                            .title Дом
+                            input(type="text" id="address-house-input")
+                        .row
+                            .title(style="white-space: nowrap") Кабинет (необязательно)
+                            input(type="text" id="address-office-input")
+                        .buttons-block
+                            button.red-button(onclick="addressModal('submit')") Готово
+                            button.gray-button.cancel(onclick="addressModal('close')") Отмена
+                .phone-modal.hidden
+                    .wrapper
+                        .row
+                            .title Номер телефона
+                            input(type="text" id="phone-number-input")
+                        .row
+                            .title(style="white-space: nowrap") Контакное лицо (необязательно)
+                            input(type="text" id="phone-person-input")
+                        .buttons-block
+                            button.red-button(onclick="phoneModal('submit')") Готово
+                            button.gray-button.cancel(onclick="phoneModal('close')") Отмена
+                .site-modal.hidden
+                    .wrapper
+                        .row
+                            .title Адрес сайта
+                            input(type="text" id="site-address-input")
+                        .buttons-block
+                            button.red-button(onclick="siteModal('submit')") Готово
+                            button.gray-button.cancel(onclick="siteModal('close')") Отмена
+                .mail-modal.hidden
+                    .wrapper
+                        .row
+                            .title Электронная почта
+                            input(type="text" id="mail-address-input")
+                        .buttons-block
+                            button.red-button(onclick="mailModal('submit')") Готово
+                            button.gray-button.cancel(onclick="mailModal('close')") Отмена
+
+
+    script(src="{% static 'scripts/organization.js' %}")
+    script(src="{% static 'scripts/index.js' %}")

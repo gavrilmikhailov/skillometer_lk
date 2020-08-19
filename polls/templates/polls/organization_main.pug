@@ -1,0 +1,209 @@
+| {% load static %}
+-
+    organizationInfo = {
+        inn: '09182374283',
+        fullName: 'Клуб анонимных трудоголиков',
+        shortName: 'К. А. Т.',
+        organizationForm: 'Некоммерческая корпорация',
+        workForm: 'Организация, осуществляющая обучение',
+        chief: 'Иванов Г.К.',
+        city: 'Якутск',
+        street: 'ул. Дзержинского',
+        house: '52',
+        cabinet: '345',
+        addresses: [
+            'Якутск, ул. Дзержинского 52, 345',
+            'Якутск, ул. Кирова 33, 110',
+            'Якутск, пр. Мира 10, 64',
+            'Якутск, ул. Кальвица 1, 98',
+        ],
+        phones: [
+            '+1 (206) 684-7171',
+            '+7 (962) 684-7172',
+            '+1 (206) 684-7173'
+        ],
+        sites: [
+            'https://example.com',
+            'http://second.net'
+        ],
+        mails: [
+            'example@gmail.com',
+            'something@yandex.ru'
+        ]
+    }
+
+    username = 'example-mail@gmail.com'
+    members_notification = 0
+    journal_notification = 0
+    balance = 1200
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        title Skillometer
+        meta(name="viewport" content="width=device-width")
+        link(rel="icon" type="image/png" href="{% static 'assets/favicon.png' %}")
+        link(rel="stylesheet" href="{% static 'styles/index.css' %}")
+        script(src="{% static 'scripts/icons.js' %}")
+    body
+        .container
+            .header
+                a.logo(href="https://skillometer.ru")
+                    img(src="{% static 'assets/logo.svg' %}")
+                .user-block
+                    img.notification-icon(src="{% static 'assets/notification_bell.svg' %}")
+                    a(href="/change_password/")
+                        img.user-icon(src="{% static 'assets/teacher_user_icon.svg' %}")
+                    .user-info
+                        .user-name=username
+                        .balance Баланс:&nbsp&nbsp&nbsp<b>#{balance || 0} ₽</b>
+
+        .panel
+            .panel-actions
+                a.panel-button(href="/quests/")
+                    img(src="{% static 'assets/icon_courses.svg' %}")
+                a.panel-button(href="/webinars/")
+                    img(src="{% static 'assets/icon_webinar.svg' %}")
+                a.panel-button.selected(href="/organization/")
+                    img(src="{% static 'assets/icon_community.svg' %}")
+                a.panel-button.notification-holder(href="/quest_members/")
+                    img(src="{% static 'assets/icon_users.svg' %}")
+                    if members_notification > 0
+                        .notification=members_notification
+                a.panel-button.notification-holder(href="/journal/")
+                    img(src="{% static 'assets/icon_board.svg' %}")
+                    if journal_notification > 0
+                        .notification=journal_notification
+            a.panel-button(href="/logout/")
+                img(src="{% static 'assets/icon_exit.svg' %}")
+        .center
+            .container
+                .content-window
+                    .content-header
+                    .Organization-main
+                        .content-title
+                            div Организация
+                        .content
+                            .column-1
+                                .organization-info
+                                    div
+                                        p Полное наименование
+                                        b=organizationInfo.fullName || ''
+                                    div
+                                        p Организационно-правовая форма
+                                        b=organizationInfo.organizationForm || ''
+                                    div
+                                        p Сокращенное наименование (общепринятое)
+                                        b=organizationInfo.shortName || ''
+                                    div
+                                        p Тип деятельности
+                                        b=organizationInfo.workForm || ''
+                                    div
+                                        p Руководитель
+                                        b=organizationInfo.chief || ''
+                                    div
+                                        p ИНН
+                                        b=organizationInfo.inn || ''
+                                    div
+                                        p Юридический адрес
+                                        if (organizationInfo.cabinet === undefined)
+                                            b=`${organizationInfo.city}, ${organizationInfo.street} ${organizationInfo.house}`
+                                        else
+                                            b=`${organizationInfo.city}, ${organizationInfo.street} ${organizationInfo.house}, ${organizationInfo.cabinet}`
+                                    each address, index in organizationInfo.addresses
+                                        div
+                                            p=`Адрес №${courses_edit + 2}`
+                                            b=address
+                                    each phone in organizationInfo.phones
+                                        div
+                                            p Телефон
+                                            b=phone
+                                    each site in organizationInfo.sites
+                                        div
+                                            p Сайт
+                                            b=site
+                                    each mail in organizationInfo.mails
+                                        div
+                                            p Почтовый адрес
+                                            b=mail
+                                .buttons-block
+                                    a.red-button(href="/organization/") Редактировать
+                                    button.gray-button.hidden(onclick="") Отмена
+                            .column-2
+                                .search-block
+                                    input.search-tf(type="text" placeholder="Поиск преподавателя" onclick="toggleSearchModal()")
+                                    button(onclick="")
+                                        img(src="{% static 'assets/search_icon.svg' %}")
+                                .teachers-block
+                                    .header
+                                        .title Преподаватели
+                                        button.sort-button(onclick="sortTeachersList(this)")
+                                            img(src="{% static 'assets/arrow_down.svg' %}")
+                                    .list
+                                        a.teacher-link(href="")
+                                            img(src="{% static 'assets/Floyd_Miles.jpg' %}")
+                                            .name Floyd Miles
+                                        a.teacher-link(href="")
+                                            img(src="{% static 'assets/Aristotle.jpg' %}")
+                                            .name Aristotle
+                                        a.teacher-link(href="")
+                                            img(src="{% static 'assets/Leonardo.jpg' %}")
+                                            .name Leonardo da Vinci
+                                        a.teacher-link(href="")
+                                            img(src="{% static 'assets/Galileo.jpg' %}")
+                                            .name Galileo Galilei
+                            .search-modal.hidden(id="teachers-search-modal")
+                                .search-block
+                                    .wrapper
+                                        input.search-tf(id="search-teacher-input" type="text" placeholder="Поиск преподавателя")
+                                        .tags-section
+                                    button(onclick="")
+                                        img(src="{% static 'assets/search_icon.svg' %}")
+                                .tags-block
+                                    div
+                                        button(onclick="addSearchTag(this)") #программирование
+                                        button(onclick="addSearchTag(this)") #дизайн
+                                        button(onclick="addSearchTag(this)") #ux
+                                        button(onclick="addSearchTag(this)") #ui
+                                        button(onclick="addSearchTag(this)") #философия
+                                        button(onclick="addSearchTag(this)") #история
+                                    div
+                                        button.hidden(onclick="clearSearchTags()" id="tags-clear-button") Очистить теги
+                                .search-results
+                                    .title Результаты поиска
+                                    .list
+                                        a.teacher-link-result(href="")
+                                            img(src="{% static 'assets/Floyd_Miles.jpg' %}")
+                                            .name Floyd Miles
+                                            .age 28 лет
+                                            .rating
+                                                img.active-star(src="{% static 'assets/star_icon_black.svg' %}")
+                                                img.active-star(src="{% static 'assets/star_icon_black.svg' %}")
+                                                img.active-star(src="{% static 'assets/star_icon_black.svg' %}")
+                                                img(src="{% static 'assets/star_icon_black.svg' %}")
+                                                img(src="{% static 'assets/star_icon_black.svg' %}")
+                                            .tags UX/UI design, Web design
+                                            a.teacher-link-result(href="")
+                                            img(src="{% static 'assets/Floyd_Miles.jpg' %}")
+                                            .name Freddie Mercury
+                                            .age 33 года
+                                            .rating
+                                                img.active-star(src="{% static 'assets/star_icon_black.svg' %}")
+                                                img.active-star(src="{% static 'assets/star_icon_black.svg' %}")
+                                                img.active-star(src="{% static 'assets/star_icon_black.svg' %}")
+                                                img.active-star(src="{% static 'assets/star_icon_black.svg' %}")
+                                                img.active-star(src="{% static 'assets/star_icon_black.svg' %}")
+                                            .tags DevOps, Consulting
+                                        a.teacher-link-result(href="")
+                                            img(src="{% static 'assets/Floyd_Miles.jpg' %}")
+                                            .name Floyd Miles
+                                            .age 21 год
+                                            .rating
+                                                img.active-star(src="{% static 'assets/star_icon_black.svg' %}")
+                                                img.active-star(src="{% static 'assets/star_icon_black.svg' %}")
+                                                img.active-star(src="{% static 'assets/star_icon_black.svg' %}")
+                                                img.active-star(src="{% static 'assets/star_icon_black.svg' %}")
+                                                img(src="{% static 'assets/star_icon_black.svg' %}")
+                                            .tags Mobile development, RN, Flutter, Xamarin
+
+        script(src="{% static 'scripts/organization.js' %}")
+        script(src="{% static 'scripts/index.js' %}")
