@@ -529,7 +529,6 @@ img {
   margin-top: 18px;
 }
 .Courses-edit .column-1 {
-  display: flex;
   flex-direction: column;
   flex-basis: 50%;
   max-width: 729px;
@@ -603,8 +602,9 @@ img {
   width: 100%;
   max-width: 729px;
 }
-.Courses-edit .column-2 #selected-image {
+.Courses-edit .column-2 #selected-image img {
   max-height: 179px;
+  margin-bottom: 10px;
 }
 .Courses-edit #dropdownList {
   z-index: 12;

@@ -116,10 +116,11 @@ body
                                         div Выберите адрес
                                         each address, index in availableAddresses
                                             button.dropdown-item(onClick=`selectDropdownItem(${index}, '${address}', 'courses3')`)=address
-                                img.hidden(id="selected-image" src="")
+                                div(id="selected-image")
+
                                 .image-picker-block
                                     button.gray-button(onclick="openFileInput()") Выберите изображение
-                                    .img-name=dataForEditing.image || ''
+                                    .img-name
                                     input.hidden(type="file" multiple=false accept="image/png, image/jpeg, image/gif" id="image-input")
                             div
                                 button.red-button(onclick="submitNewCourse()") Далее

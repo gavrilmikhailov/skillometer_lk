@@ -32,10 +32,15 @@ function imageHandler(event) {
     let input = document.querySelector('#image-input')
     let file = input.files[0]
     let size = returnFileSize(file.size)
-    let image = document.getElementById('selected-image')
+    let imageContainer = document.getElementById('selected-image')
+    console.log(imageContainer)
+    let image = document.createElement('img')
     image.src = URL.createObjectURL(file)
-    image.classList.remove('hidden')
-    document.querySelector('.img-name').innerHTML = file.name + '   ' + size
+    imageContainer.classList.remove('hidden')
+    imageContainer.appendChild(image)
+    let imgName = document.createElement('div')
+    imgName.innerHTML = file.name + '   ' + size
+    document.querySelector('.img-name').append(imgName)
 }
 
 // Вычисление размера изображения

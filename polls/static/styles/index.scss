@@ -461,7 +461,7 @@ img {
     }
   }
   .column-1 {
-    display: flex;
+    //display: flex;
     flex-direction: column;
     flex-basis: 50%;
     max-width: 729px;
@@ -538,7 +538,10 @@ img {
       max-width: 729px;
     }
     #selected-image {
-      max-height: 179px;
+      img {
+        max-height: 179px;
+        margin-bottom: 10px;
+      }
     }
   }
   #dropdownList {

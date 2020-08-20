@@ -688,7 +688,6 @@ function buildDetailView(answerId) {
         let sign = document.createElement('input')
         sign.type = 'text'
         sign.className = 'sign'
-        sign.addEventListener()
         sign.innerHTML = attempt.mark === undefined ? '' : attempt.mark
         sign.setAttribute('onfocus', 'setListenerForSelf(this)')
         counter.append(buttonSubtract, sign, buttonAdd)
