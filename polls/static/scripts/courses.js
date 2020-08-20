@@ -1,6 +1,7 @@
 // Наблюдаемый курс
 let observedCourseIndex = 0
 
+
 // Для перетасовки карт на < (1600х900)
 function screenMediaHandler() {
     // arrange cards on screen resize
@@ -30,12 +31,20 @@ function resizePanel() {
     document.querySelector('.panel').style.height = `${document.querySelector('.content-window').scrollHeight}px`
 }
 
+
+function parseData(data) {
+    while (data.includes('&#x27;')) {
+        data = data.replace('&#x27;', '\"')
+        data = data.replace('False', 'false')
+        data = data.replace('True', 'true')
+    }
+    let newData = JSON.parse(data)
+    selectCourse(newData.course, newData.courses)
+}
+
+
 // Выбор курса на правой панели
-function selectCourse(courseId) {
-    let course = courses.find((item, index) => {
-        observedCourseIndex = index
-        return item.id == courseId
-    })
+function selectCourse(course, courses) {
 
     let infoCardItems = document.querySelector('.InfoCourseCard').lastElementChild.children
     for (let i = 0; i < infoCardItems.length; i++) {
@@ -85,7 +94,7 @@ function selectCourse(courseId) {
     descriptions[0].innerHTML = `Группы (по ${course.groupsCapacity} чел)`
 
     drawCharts()
-    updateYourCourses()
+    updateYourCourses(courses)
 
     function drawCharts() {
         drawGeographyChart(course.charts.geography)
@@ -104,7 +113,7 @@ function selectCourse(courseId) {
 }
 
 // Обновление списка курсов на правой панели
-function updateYourCourses() {
+function updateYourCourses(courses) {
     let yourCoursesBlock = document.querySelector('.YourCourses')
     while (yourCoursesBlock.lastElementChild.classList.contains('courses-item'))
         yourCoursesBlock.removeChild(yourCoursesBlock.lastElementChild)
@@ -114,9 +123,10 @@ function updateYourCourses() {
         courseItem.classList.add('courses-item')
 
         let courseName = document.createElement('button')
-        courseName.className = `course-name ${course.visible ? "" : "course-hidden"}`
+        courseName.className = `course-name ${course.isEnabled ? "" : "course-hidden"}`
         courseName.innerHTML = course.name
-        courseName.setAttribute('onclick', `selectCourse('${course.id}')`)
+        // courseName.href= `/courses/${course.id}`
+        courseName.setAttribute('onclick', `location.href = '/courses/${course.id}'`)
 
         let controls = document.createElement('div')
         controls.className = 'controls'
@@ -127,7 +137,7 @@ function updateYourCourses() {
         let courseCheckbox = document.createElement('input')
         courseCheckbox.type = 'checkbox'
         courseCheckbox.className = 'course-checkbox'
-        courseCheckbox.checked = course.visible
+        courseCheckbox.checked = course.isEnabled
         courseCheckbox.id = `checkbox-for-${course.id}`
         courseCheckbox.name = `checkbox-for-${course.id}`
         courseCheckbox.setAttribute('onclick', `changeCourseVisibility('${course.id}', this)`)
@@ -142,7 +152,7 @@ function updateYourCourses() {
             starsBlock.append(star)
         }
 
-        courseItem.setAttribute('category', course.info.category)
+        courseItem.setAttribute('category', course.directionId)
 
         controls.append(starsBlock, courseCheckbox)
         courseItem.append(courseName, controls)
@@ -199,6 +209,7 @@ function scrollCategories(dir) {
 
 // Сортировка списка курсов на правой панели (стрелка вниз)
 function sortYourCourses() {
+    console.log(document.querySelector('#dataHolder').innerHTML)
     let yourCoursesBlock = document.querySelector('.YourCourses')
     let yourCoursesChildren = yourCoursesBlock.getElementsByClassName('courses-item')
     let htmlCollectionAsArray = Array.from(yourCoursesChildren)
@@ -217,6 +228,7 @@ function sortYourCourses() {
 
 // Сортировка списка курсов по отдельным направлениям (клик по карточке)
 function sortCoursesByDirection(category) {
+    cancelCoursesFilter()
     let yourCoursesBlock = document.querySelector('.YourCourses')
     let yourCoursesChildren = yourCoursesBlock.children
 
@@ -270,7 +282,6 @@ function drawGeographyChart(dataArray) {
     let shift = -Math.PI / 2
     ctx.lineWidth = 17; // толщина линии
     let startAngle = 0
-
 
     if (dataArray === null || dataArray === undefined) return
     let colors = ['#FF455D', '#BB7CF5', '#05CDE1', '#FFD101']

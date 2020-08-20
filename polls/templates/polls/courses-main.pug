@@ -1,554 +1,187 @@
 | {% load static %}
--
-    username = 'example-mail@gmail.com'
-    members_notification = 0
-    journal_notification = 0
-    balance = 1200
 
-    courseCategories = [
-        {
-            title: 'Естественно-научные',
-            image: "/static/assets/direction_image_1.png",
-            icon: "/static/assets/direction_icon_1.svg",
-        },
-        {
-            title: "Инженерные и ИТ",
-            image: "/static/assets/direction_image_2.png",
-            icon: "/static/assets/direction_icon_2.svg",
-        },
-        {
-            title: "Предпринимательские",
-            image: "/static/assets/direction_image_3.png",
-            icon: "/static/assets/direction_icon_3.svg",
-        },
-        {
-            title: "Социально-общественные",
-            image: "/static/assets/direction_image_4.png",
-            icon: "/static/assets/direction_icon_4.svg",
-        },
-        {
-            title: "Творчество",
-            image: "/static/assets/direction_image_5.png",
-            icon: "/static/assets/direction_icon_5.svg",
-        },
-        {
-            title: "Физкультурно-спортивные",
-            image: "/static/assets/direction_image_6.png",
-            icon: "/static/assets/direction_icon_6.svg",
-        },
-        {
-            title: "Языковые",
-            image: "/static/assets/direction_image_7.png",
-            icon: "/static/assets/direction_icon_7.svg",
-        }
-    ]
-    courses = [
-        {
-            id: 1,
-            name: "Философия",
-            rating: 5,
-            visible: true,
-            info: {
-                mainTag: "#java",
-                secondaryTag: "#программирование",
-                ageGroup: "9 – 18",
-                category: "Естественно-научные",
-                educationFormat: "Онлайн",
-                trialLesson: "Есть",
-                description: "Программирование с нуля",
-                address: "г. Якутск, ул. Ленина 1, каб 23"
-            },
-            schedule: [
-                {
-                    date: "ЧТ (18:00-20:00)",
-                    address: "Якутск, ул. Дзержинского 48, к. 128"
-                },
-                {
-                    date: "ПТ (18:00-20:00)",
-                    address: "Якутск, ул. Ленина 1, к. 223"
-                },
-                {
-                    date: "ПН (18:00-20:00)",
-                    address: "Якутск, ул. Дзержинского 48, к. 128"
-                },
-                {
-                    date: "ВТ (18:00-20:00)",
-                    address: "Якутск, ул. Ленина 1, к. 223"
-                },
-                {
-                    date: "СР (18:00-20:00)",
-                    address: "Якутск, ул. Дзержинского 48, к. 128"
-                }
-            ],
-            educationPeriod: {
-                start: "15.06.2020",
-                end: "15.08.2020"
-            },
-            requests: 64,
-            numberOfGroups: 4,
-            groupsCapacity: 15,
-            places: {
-                occupied: 4,
-                available: 13
-            },
-            charts: {
-                geography: [
-                    {
-                        name: 'Якутск',
-                        value: 4
-                    },
-                    {
-                        name: 'Нерюнгри',
-                        value: 1
-                    },
-                    {
-                        name: 'Мирный',
-                        value: 2
-                    },
-                    {
-                        name: 'Алдан',
-                        value: 3
-                    }
-                ],
-                payments: {
-                    paid: 23,
-                    total: 100
-                },
-                groups: 100,
-                vacants: {
-                    occupied: 2,
-                    total: 15
-                },
-                requests: {
-                    accepted: 20,
-                    total: 33
-                },
-                directions: [
-                    {
-                        name: 'Программирование',
-                        value: 4
-                    },
-                    {
-                        name: 'Веб дизайн',
-                        value: 1
-                    },
-                    {
-                        name: 'История',
-                        value: 2
-                    },
-                    {
-                        name: 'Философия',
-                        value: 3
-                    },
-                ],
-                popularity: [
-                    {
-                        paid: 7,
-                        requested: 8,
-                        total: 10
-                    },
-                    {
-                        paid: 10,
-                        requested: 15,
-                        total: 25
-                    },
-                    {
-                        paid: 1,
-                        requested: 2,
-                        total: 3
-                    },
-                    {
-                        paid: 7,
-                        requested: 8,
-                        total: 10
-                    },
-                    {
-                        paid: 10,
-                        requested: 15,
-                        total: 25
-                    },
-                    {
-                        paid: 1,
-                        requested: 2,
-                        total: 3
-                    },
-                    {
-                        paid: 7,
-                        requested: 8,
-                        total: 10
-                    },
-                    {
-                        paid: 5,
-                        requested: 40,
-                        total: 40
-                    },
-                    {
-                        paid: 1,
-                        requested: 2,
-                        total: 3
-                    },
-                    {
-                        paid: 0,
-                        requested: 0,
-                        total: 10
-                    },
-                    {
-                        paid: 10,
-                        requested: 15,
-                        total: 25
-                    },
-                    {
-                        paid: 1,
-                        requested: 2,
-                        total: 3
-                    }
-                ],
-            }
-        },
-        {
-            id: 2,
-            name: "История",
-            rating: 1,
-            visible: false,
-            info: {
-                mainTag: "#history",
-                secondaryTag: "#история",
-                ageGroup: "7 – 11",
-                category: "Естественно-научные",
-                educationFormat: "Онлайн",
-                trialLesson: "Нет",
-                description: "История с нуля",
-                address: "г. Якутск, ул. Ленина 1, каб 23"
-            },
-            schedule: [
-                {
-                    date: "ЧТ (18:00-20:00)",
-                    address: "Якутск, ул. Лермонтова 48, к. 128"
-                },
-                {
-                    date: "ПТ (18:00-20:00)",
-                    address: "Якутск, ул. Кирова 1, к. 223"
-                },
-                {
-                    date: "ПН (18:00-20:00)",
-                    address: "Якутск, ул. Лермонтова 48, к. 128"
-                },
-                {
-                    date: "ВТ (18:00-20:00)",
-                    address: "Якутск, ул. Кирова 1, к. 223"
-                },
-                {
-                    date: "СР (18:00-20:00)",
-                    address: "Якутск, ул. Лермонтова 48, к. 128"
-                }
-            ],
-            educationPeriod: {
-                start: "21.06.2020",
-                end: "22.08.2020"
-            },
-            requests: 32,
-            numberOfGroups: 2,
-            groupsCapacity: 5,
-            places: {
-                occupied: 6,
-                available: 4
-            },
-            charts: {
-                geography: [
-                    {
-                        name: 'Якутск',
-                        value: 13
-                    },
-                    {
-                        name: 'Нерюнгри',
-                        value: 3
-                    },
-                    {
-                        name: 'Мирный',
-                        value: 2
-                    },
-                    {
-                        name: 'Алдан',
-                        value: 5
-                    }
-                ],
-                payments: {
-                    paid: 86,
-                    total: 100
-                },
-                groups: 100,
-                vacants: {
-                    occupied: 2,
-                    total: 15
-                },
-                requests: {
-                    accepted: 20,
-                    total: 33
-                },
-                directions: [
-                    {
-                        name: 'Программирование',
-                        value: 4
-                    },
-                    {
-                        name: 'Веб дизайн',
-                        value: 1
-                    },
-                    {
-                        name: 'История',
-                        value: 2
-                    },
-                    {
-                        name: 'Философия',
-                        value: 3
-                    },
-                ],
-                popularity: [
-                    {
-                        paid: 3,
-                        requested: 6,
-                        total: 10
-                    },
-                    {
-                        paid: 10,
-                        requested: 15,
-                        total: 25
-                    },
-                    {
-                        paid: 2,
-                        requested: 2,
-                        total: 3
-                    },
-                    {
-                        paid: 1,
-                        requested: 8,
-                        total: 10
-                    },
-                    {
-                        paid: 5,
-                        requested: 15,
-                        total: 25
-                    },
-                    {
-                        paid: 3,
-                        requested: 3,
-                        total: 3
-                    },
-                    {
-                        paid: 9,
-                        requested: 9,
-                        total: 10
-                    },
-                    {
-                        paid: 15,
-                        requested: 40,
-                        total: 40
-                    },
-                    {
-                        paid: 1,
-                        requested: 2,
-                        total: 3
-                    },
-                    {
-                        paid: 5,
-                        requested: 6,
-                        total: 10
-                    },
-                    {
-                        paid: 3,
-                        requested: 4,
-                        total: 25
-                    },
-                    {
-                        paid: 7,
-                        requested: 8,
-                        total: 9
-                    }
-                ],
-            }
-        }
-    ]
 html(lang="ru")
-head
-    meta(charset="UTF-8")
-    title Skillometer
-    meta(name="viewport" content="width=device-width")
-    link(rel="icon" type="image/png" href="{% static 'assets/favicon.png' %}")
-    link(rel="stylesheet" href="{% static 'styles/index.css' %}")
-    script(src="{% static 'scripts/icons.js' %}")
-body
-    .container
-        .header
-            a.logo(href="https://skillometer.ru")
-                img(src="{% static 'assets/logo.svg' %}")
-            .user-block
-                img.notification-icon(src="{% static 'assets/notification_bell.svg' %}")
-                a(href="/change_password/")
-                    img.user-icon(src="{% static 'assets/teacher_user_icon.svg' %}")
-                .user-info
-                    .user-name=username
-                    .balance Баланс:&nbsp&nbsp&nbsp<b>#{balance || 0} ₽</b>
-    .panel
-        .panel-actions
-            a.panel-button.selected(href="/quests/")
-                img(src="{% static 'assets/icon_courses.svg' %}")
-            a.panel-button(href="/webinars/")
-                img(src="{% static 'assets/icon_webinar.svg' %}")
-            a.panel-button(href="/organization/")
-                img(src="{% static 'assets/icon_community.svg' %}")
-            a.panel-button.notification-holder(href="/quest_members/")
-                img(src="{% static 'assets/icon_users.svg' %}")
-                if members_notification > 0
-                    .notification=members_notification
-            a.panel-button.notification-holder(href="/journal/")
-                img(src="{% static 'assets/icon_board.svg' %}")
-                if journal_notification > 0
-                    .notification=journal_notification
-        a.panel-button(href="/logout/")
-            img(src="{% static 'assets/icon_exit.svg' %}")
-    .center
+    head
+        meta(charset="UTF-8")
+        title Skillometer
+        meta(name="viewport" content="width=device-width")
+        link(rel="icon" type="image/png" href="{% static 'assets/favicon.png' %}")
+        link(rel="stylesheet" href="{% static 'styles/index.css' %}")
+        script(src="{% static 'scripts/icons.js' %}")
+    body
         .container
-            .content-window
-                .content-header
-                .Courses-main
-                    .content-title
-                        div Курсы
-                        button.round(onclick="")
-                            img(src="{% static 'assets/your-courses-arrow.svg' %}" alt="")
-                    .slider
-                        .slides-wrapper(id="slider")
-                            each category in courseCategories
-                                a.CourseCategoryCard(style=`background: linear-gradient(180deg, #030303 0%, rgba(63, 62, 62, 0) 100%), url(${category.image}) no-repeat; background-size: cover` onclick=`sortCoursesByDirection('${category.title}')`)
-                                    .row
-                                        img(src=category.icon alt="")
-                                        .text=category.title
-                        button.prev-btn(id="prev-btn" onclick="scrollCategories('left')")
-                            img(src="{% static 'assets/left_arrow.svg' %}" alt="")
-                        button.next-btn(id="next-btn" onclick="scrollCategories('right')")
-                            img(src="{% static 'assets/left_arrow.svg' %}" alt="")
-                    .column-left-courses
-                        .wrapper
-                            .CardsBlock
-                                .column-left
-                                    .InfoCourseCard
-                                        .left-column
-                                            div Основной тэг:
-                                            div Дополнительный тэг:
-                                            div Возрастная группа:
-                                            div Категория:
-                                            div Формат обучения:
-                                            div Пробное занятие:
-                                            div Описание:
-                                            div Адрес:
-                                        .right-column
-                                            div
-                                            div
-                                            div
-                                            div
-                                            div
-                                            div
-                                            div
-                                            div
-                                    .GroupsCourseCard
-                                        .left
-                                            .chart-wrapper
-                                                canvas(width=50 height=50 id="numberOfGroupsChart")
-                                                .sign
-                                            .content
-                                                .date
-                                                .label
-                                        .right
-                                            .chart-wrapper
-                                                canvas(width=50 height=50 id="vacantsChart")
-                                                .sign
-                                            .content
-                                                .date
-                                                .label Свободных мест
-                                    .GeographyCard
-                                        .chart
-                                            canvas(width=200 height=200 id="geographyChart")
-                                        .chart-data
-                                            .title География
-                                            .description Охват учащихся
-                                        button.export-button.center(onclick="")
-                                            img(src="{% static 'assets/export_icon.svg' %}")
-                                .column-right
-                                    .ScheduleCourseCard
-                                        img(src="{% static 'assets/schedule_icon.svg' %}" alt="")
-                                        .content
-                                            .label Расписание занятий
-                                    .PeriodCourseCard
-                                        img(src="{% static 'assets/calendar_icon.svg' %}" alt="")
-                                        .content
-                                            .date
-                                            .label Период обучения
-                                    .row
-                                        .RequestsCourseCard
-                                            img(src="{% static 'assets/student_icon.svg' %}", alt="")
-                                            .content
-                                                .date
-                                                .label Входящих заявок
-                                        .PaymentCourseCard
-                                            .chart-wrapper
-                                                canvas(width=50 height=50 id="paymentsChart")
-                                                .sign ₽
-                                            .content
-                                                .date
-                                                .label Оплатили
-                                    .PopularityCard
-                                        .sub-header
+            .header
+                a.logo(href="https://skillometer.ru")
+                    img(src="{% static 'assets/logo.svg' %}")
+                .user-block
+                    img.notification-icon(src="{% static 'assets/notification_bell.svg' %}")
+                    a(href="/change_password/")
+                        img.user-icon(src="{% static 'assets/teacher_user_icon.svg' %}")
+                    .user-info
+                        .user-name=username
+                        .balance Баланс:&nbsp&nbsp&nbsp<b>{{data.balance}} ₽</b>
+        .panel
+            .panel-actions
+                a.panel-button.selected(href="/quests/")
+                    img(src="{% static 'assets/icon_courses.svg' %}")
+                a.panel-button(href="/webinars/")
+                    img(src="{% static 'assets/icon_webinar.svg' %}")
+                a.panel-button(href="/organization/")
+                    img(src="{% static 'assets/icon_community.svg' %}")
+                a.panel-button.notification-holder(href="/quest_members/")
+                    img(src="{% static 'assets/icon_users.svg' %}")
+                    if members_notification > 0
+                        .notification=members_notification
+                a.panel-button.notification-holder(href="/journal/")
+                    img(src="{% static 'assets/icon_board.svg' %}")
+                    if journal_notification > 0
+                        .notification=journal_notification
+            a.panel-button(href="/logout/")
+                img(src="{% static 'assets/icon_exit.svg' %}")
+        .center
+            .container
+                .content-window
+                    .content-header
+                    .Courses-main
+                        .content-title
+                            div Курсы
+                            button.round(onclick="")
+                                img(src="{% static 'assets/your-courses-arrow.svg' %}" alt="")
+                        .slider
+                            .slides-wrapper(id="slider")
+                                each category in data.courseCategories
+                                    a.CourseCategoryCard(style="background: linear-gradient(180deg, #030303 0%, rgba(63, 62, 62, 0) 100%), url('/static/assets/direction_image_{{category.id}}.png') no-repeat; background-size: cover" onclick="sortCoursesByDirection('{{category.id}}')")
+                                        .row
+                                            img(src='/static/assets/direction_icon_{{category.id}}.svg' alt="")
+                                            .text=category.title
+                            button.prev-btn(id="prev-btn" onclick="scrollCategories('left')")
+                                img(src="{% static 'assets/left_arrow.svg' %}" alt="")
+                            button.next-btn(id="next-btn" onclick="scrollCategories('right')")
+                                img(src="{% static 'assets/left_arrow.svg' %}" alt="")
+                        .column-left-courses
+                            .wrapper
+                                .CardsBlock
+                                    .column-left
+                                        .InfoCourseCard
+                                            .left-column
+                                                div Основной тэг:
+                                                div Дополнительный тэг:
+                                                div Возрастная группа:
+                                                div Категория:
+                                                div Формат обучения:
+                                                div Пробное занятие:
+                                                div Описание:
+                                                div Адрес:
+                                            .right-column
+                                                div=data.course.info.mainTag
+                                                div=data.course.info.secondaryTag
+                                                div=data.course.info.ageGroup
+                                                div=data.course.info.category
+                                                div=data.course.info.educationFormat
+                                                div=data.course.info.trialLesson
+                                                div=data.course.info.description
+                                                div=data.course.info.address
+                                        .GroupsCourseCard
                                             .left
-                                                .title Популярность курса
-                                                .description Охват учащихся по месяцам
+                                                .chart-wrapper
+                                                    canvas(width=50 height=50 id="numberOfGroupsChart")
+                                                    .sign
+                                                .content
+                                                    .date
+                                                    .label
                                             .right
-                                                .row
-                                                    .block.gray
-                                                    div Входящие заявки
-                                                .row
-                                                    .block.red
-                                                    div Оплаты
-                                        .main(id="temporaryID")
-                                            .scale
-                                                div 100
-                                                div 50
-                                                div 0
-                                            each month in ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
-                                                .pillar
-                                                    canvas(width=10 height=100)
-                                                    .month=month
-                                        button.export-button.center(onclick="")
-                                            img(src="{% static 'assets/export_icon.svg' %}")
-                        .column-right-courses
-                            .buttons-block
-                                a.add-button.center(href="/quest_edit/")
-                                    img(src="{% static 'assets/plus_2.svg' %}" alt="")
-                                a.red-button.center(href="" id="course-edit-ref") Изменить
-                                button.gray-button(onclick="deleteModal('show')") Удалить
-                            .YourCourses
-                                .sub-header
-                                    div Ваши курсы
-                                    .filter-block
-                                        .filter-name(id="current-filter") Все
-                                        button.filter-button(onclick="sortYourCourses()" id="courses-sort-btn")
-                                            img(src="{% static 'assets/your_courses_arrow_white.svg' %}")
-                                        button.filter-button.hidden(onclick="cancelCoursesFilter()" id="courses-filter-btn")
-                                            img(src="{% static 'assets/your_courses_close_x.svg' %}")
-                                .courses-item
-                                    button.course-name Философия
-                                    .controls
-                                        .stars-block
-                                            .active-star
-                                                img(src="{% static 'assets/star_icon_black.svg' %}")
-                                        input.course-checkbox(id="checkbox-for-1" type="checkbox" onclick="changeCourseVisibility('1', this)")
-                    .delete-modal.hidden
-                        .wrapper
-                            .row
-                                .title Удалить курс?
-                            .buttons-block
-                                button.red-button(onclick="deleteModal('submit')") Удалить
-                                button.gray-button.cancel(onclick="deleteModal('close')") Отмена
-    script(type='text/javascript').
-        let courses = !{JSON.stringify(courses)}
-
+                                                .chart-wrapper
+                                                    canvas(width=50 height=50 id="vacantsChart")
+                                                    .sign
+                                                .content
+                                                    .date
+                                                    .label Свободных мест
+                                        .GeographyCard
+                                            .chart
+                                                canvas(width=200 height=200 id="geographyChart")
+                                            .chart-data
+                                                .title География
+                                                .description Охват учащихся
+                                            button.export-button.center(onclick="")
+                                                img(src="{% static 'assets/export_icon.svg' %}")
+                                    .column-right
+                                        .ScheduleCourseCard
+                                            img(src="{% static 'assets/schedule_icon.svg' %}" alt="")
+                                            .content
+                                                .label Расписание занятий
+                                        .PeriodCourseCard
+                                            img(src="{% static 'assets/calendar_icon.svg' %}" alt="")
+                                            .content
+                                                .date
+                                                .label Период обучения
+                                        .row
+                                            .RequestsCourseCard
+                                                img(src="{% static 'assets/student_icon.svg' %}", alt="")
+                                                .content
+                                                    .date
+                                                    .label Входящих заявок
+                                            .PaymentCourseCard
+                                                .chart-wrapper
+                                                    canvas(width=50 height=50 id="paymentsChart")
+                                                    .sign ₽
+                                                .content
+                                                    .date
+                                                    .label Оплатили
+                                        .PopularityCard
+                                            .sub-header
+                                                .left
+                                                    .title Популярность курса
+                                                    .description Охват учащихся по месяцам
+                                                .right
+                                                    .row
+                                                        .block.gray
+                                                        div Входящие заявки
+                                                    .row
+                                                        .block.red
+                                                        div Оплаты
+                                            .main(id="temporaryID")
+                                                .scale
+                                                    div 100
+                                                    div 50
+                                                    div 0
+                                                each month in data.months
+                                                    .pillar
+                                                        canvas(width=10 height=100)
+                                                        .month=month
+                                            button.export-button.center(onclick="")
+                                                img(src="{% static 'assets/export_icon.svg' %}")
+                            .column-right-courses
+                                .buttons-block
+                                    a.add-button.center(href="/quest_edit/")
+                                        img(src="{% static 'assets/plus_2.svg' %}" alt="")
+                                    a.red-button.center(href="" id="course-edit-ref") Изменить
+                                    button.gray-button(onclick="deleteModal('show')") Удалить
+                                .YourCourses
+                                    .sub-header
+                                        div Ваши курсы
+                                        .filter-block
+                                            .filter-name(id="current-filter") Все
+                                            button.filter-button(onclick="sortYourCourses()" id="courses-sort-btn")
+                                                img(src="{% static 'assets/your_courses_arrow_white.svg' %}")
+                                            button.filter-button.hidden(onclick="cancelCoursesFilter()" id="courses-filter-btn")
+                                                img(src="{% static 'assets/your_courses_close_x.svg' %}")
+                                    .courses-item
+    //-                                     button.course-name Философия
+    //-                                     .controls
+    //-                                         .stars-block
+    //-                                             .active-star
+    //-                                                 img(src="{% static 'assets/star_icon_black.svg' %}")
+    //-                                         input.course-checkbox(id="checkbox-for-1" type="checkbox" onclick="changeCourseVisibility('1', this)")
+                        .delete-modal.hidden
+                            .wrapper
+                                .row
+                                    .title Удалить курс?
+                                .buttons-block
+                                    button.red-button(onclick="deleteModal('submit')") Удалить
+                                    button.gray-button.cancel(onclick="deleteModal('close')") Отмена
+//-     div.hidden(id="dataHolder")=data.username
 script(src="{% static 'scripts/courses.js' %}")
-script(src="{% static 'scripts/index.js' %}")
+script.
+    parseData("{{data}}")
+
+//- script(src="{% static 'scripts/index.js' %}")

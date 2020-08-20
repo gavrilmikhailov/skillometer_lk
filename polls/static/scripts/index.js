@@ -107,8 +107,8 @@ function handlePanelIndicator() {
 function firstResponder() {
     // handlePanelIndicator()
     if (document.querySelector('.Courses-main') !== null) {
-        let firstCourseId = courses[0].id
-        selectCourse(firstCourseId)
+        // let firstCourseId = courses[0].id
+        // selectCourse(firstCourseId)
     }
     if (document.querySelector('#image-input') !== null) {
         document.querySelector('#image-input').addEventListener('change', imageHandler)

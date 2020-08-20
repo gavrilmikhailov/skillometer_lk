@@ -568,7 +568,6 @@ function journalSearchHandler(sender) {
 }
 
 
-
 // Отображение экрана ДЕТАЛИ
 function showAnswerDetail(answerId) {
 
@@ -667,7 +666,9 @@ function buildDetailView(answerId) {
 
         let answerBody = document.createElement('button')
         answerBody.className = 'answer-body'
-        answerBody.setAttribute('onclick', 'handleEditorMode(this)')
+
+        if (index === answer.attempts.length - 1) answerBody.setAttribute('onclick', 'handleEditorMode(this)')
+
         let secondTitle = document.createElement('div')
         secondTitle.innerHTML = `Ответ (${index + 1} попытка)`
         secondTitle.className = 'title'
@@ -687,7 +688,9 @@ function buildDetailView(answerId) {
         let sign = document.createElement('input')
         sign.type = 'text'
         sign.className = 'sign'
+        sign.addEventListener()
         sign.innerHTML = attempt.mark === undefined ? '' : attempt.mark
+        sign.setAttribute('onfocus', 'setListenerForSelf(this)')
         counter.append(buttonSubtract, sign, buttonAdd)
 
         wrapper.append(answerBody, counter)
@@ -719,6 +722,31 @@ function buildDetailView(answerId) {
 
     modal.replaceChild(mainWrapper, modal.lastElementChild)
 }
+
+// Блокировка не-цифр в поле ввода оценки
+function validateMarkInput(sender) {
+
+}
+
+// Установка eventListener при фокусе на поле ввода оценки
+function setListenerForSelf() {
+    document.addEventListener('keydown', enterListener)
+}
+
+// EventListener для сброса фокуса при нажатии Enter
+const enterListener = (event) => {
+    if (event.keyCode === 13) {
+        document.removeEventListener('keydown', enterListener)
+        document.activeElement.blur()
+    }
+    if (event.keyCode === 107) {
+        changeMark(document.activeElement, 1)
+    }
+    if (event.keyCode === 109) {
+        changeMark(document.activeElement, -1)
+    }
+}
+
 
 // Редактируется попытка студента или нет
 function handleEditorMode(sender) {
@@ -754,6 +782,11 @@ function submitMark(sender) {
     attemptBody.classList.remove('active')
 }
 
+window.onload = functionD
+
+function functionD() {
+    let request
+}
 
 if (document.querySelector('.Journal-main') != null) {
     presenceHandler(0)
