@@ -379,6 +379,7 @@ function switchLesson() {
         scoreBlock.innerHTML = `${lesson.scores.max} Баллов (проходной балл ${lesson.scores.passing})`
     if (lesson.course !== undefined) {
         courseName.innerHTML = `Курс: ${lesson.course.name}`
+        console.log('Called generator')
         let newIcon = directionIconGenerator(null, lesson.course.category)
         courseIcon.setAttribute('src', newIcon)
         courseIcon.setAttribute('onload', '')
@@ -683,7 +684,8 @@ function buildDetailView(answerId) {
         let buttonAdd = document.createElement('button')
         buttonAdd.setAttribute('onclick', 'changeMark(this, 1)')
         buttonAdd.innerHTML = '+'
-        let sign = document.createElement('div')
+        let sign = document.createElement('input')
+        sign.type = 'text'
         sign.className = 'sign'
         sign.innerHTML = attempt.mark === undefined ? '' : attempt.mark
         counter.append(buttonSubtract, sign, buttonAdd)
@@ -731,14 +733,14 @@ function handleEditorMode(sender) {
 // Выставление балла (+ -)
 function changeMark(sender, value) {
     let markTextField = sender.parentElement.children[1]
-    let newValue = Number.parseInt(markTextField.innerHTML)
+    let newValue = Number.parseInt(markTextField.value)
     if (isNaN(newValue)) {
         newValue = 1
-        markTextField.innerHTML = newValue
+        markTextField.value = newValue
         return
     }
     newValue += value
-    markTextField.innerHTML = newValue
+    markTextField.value = newValue
 }
 
 // Сохранить оценку и комментарий для ответа
@@ -755,4 +757,5 @@ function submitMark(sender) {
 
 if (document.querySelector('.Journal-main') != null) {
     presenceHandler(0)
+    switchLesson()
 }

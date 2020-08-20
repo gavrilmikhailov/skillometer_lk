@@ -742,7 +742,7 @@ html(lang="ru")
                                     div
                                         .course-name-block
                                             div=`Курс: ${lessons[0].course.name}`
-                                            img(src="{% static 'assets/direction_icon_1.svg' %}" onload=`directionIconGenerator(this, '${lessons[0].course.category}')`)
+                                            img(src="{% static 'assets/direction_icon_1.svg' %}")
                                         .number-of-questions=`${lessons[0].course.numberOfTasks} заданий`
                             .small-cards-block
                                 .small-card

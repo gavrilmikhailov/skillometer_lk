@@ -1895,10 +1895,11 @@ img {
   align-items: center;
 }
 .Journal-main .answer-detail > :first-child .answer .wrapper .counter .sign, .Portfolio .answer-detail > :first-child .answer .wrapper .counter .sign {
+  text-align: center;
   margin: 0 25px;
   display: grid;
   place-items: center;
-  width: 77px;
+  width: 125px;
   height: 71px;
   background: #FFFFFF;
   border: 1px solid #E0E0E0;
