@@ -135,7 +135,7 @@ function updateYourCourses() {
         for (let i = 0; i < 5; i++) {
             let star = document.createElement('div')
             let starImage = document.createElement('img')
-            starImage.setAttribute('src', 'static/assets/star_icon_black.svg')
+            starImage.setAttribute('src', '/static/assets/star_icon_black.svg')
             star.append(starImage)
             if (i < course.rating)
                 star.className = 'active-star'

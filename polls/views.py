@@ -12,6 +12,10 @@ def courses_empty(request):
     return render(request, 'polls/courses_empty.html')
 
 
+def courses(request):
+    return render(request, 'polls/courses-main.html')
+
+
 def journal(request):
     return render(request, 'polls/journal.html')
 

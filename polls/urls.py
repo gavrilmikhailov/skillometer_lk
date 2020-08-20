@@ -12,4 +12,5 @@ urlpatterns = [
     path('festivals/', views.festivals, name='festivals'),
     path('portfolio/', views.portfolio, name='portfolio'),
     path('date/', views.current_datetime, name='datetime'),
+    path('courses/', views.courses, name='courses_main')
 ]
