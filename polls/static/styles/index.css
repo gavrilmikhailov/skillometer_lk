@@ -1797,7 +1797,8 @@ img {
   white-space: nowrap;
   overflow: hidden;
 }
-.Journal-main .main-block .cards-wrapper .student-card > :last-child, .Portfolio .main-block .cards-wrapper .student-card > :last-child {
+.Journal-main .main-block .cards-wrapper .student-card a, .Portfolio .main-block .cards-wrapper .student-card a {
+  z-index: 10;
   justify-self: end;
 }
 .Journal-main .main-block .cards-wrapper .student-card > :not(:first-child), .Portfolio .main-block .cards-wrapper .student-card > :not(:first-child) {
@@ -1811,7 +1812,11 @@ img {
 .Journal-main .main-block .cards-wrapper .selected-img, .Portfolio .main-block .cards-wrapper .selected-img {
   content: url("/static/assets/selection_icon_red.svg");
 }
-.Journal-main .answer-detail, .Portfolio .answer-detail {
+.Journal-main button:active, .Portfolio button:active {
+  transform: translateY(1px);
+}
+
+.answer-detail {
   position: fixed;
   background: rgba(0, 0, 0, 0.5);
   top: 0;
@@ -1826,7 +1831,7 @@ img {
   opacity: 0;
   transition: opacity 0.2s ease-in;
 }
-.Journal-main .answer-detail > :first-child, .Portfolio .answer-detail > :first-child {
+.answer-detail > :first-child {
   background: #fff;
   overflow: scroll;
   padding: 35px;
@@ -1835,7 +1840,7 @@ img {
   transition: all 0.3s ease-out;
   transform: translateY(100vh);
 }
-.Journal-main .answer-detail > :first-child .header .student-meta, .Portfolio .answer-detail > :first-child .header .student-meta {
+.answer-detail > :first-child .header .student-meta {
   font-size: 18px;
   line-height: 141.5%;
   color: #4F4F4F;
@@ -1846,14 +1851,14 @@ img {
   align-items: center;
   justify-content: space-between;
 }
-.Journal-main .answer-detail > :first-child .header .student-meta .profile, .Portfolio .answer-detail > :first-child .header .student-meta .profile {
+.answer-detail > :first-child .header .student-meta .profile {
   display: flex;
   align-items: center;
 }
-.Journal-main .answer-detail > :first-child .header .student-meta .profile img, .Portfolio .answer-detail > :first-child .header .student-meta .profile img {
+.answer-detail > :first-child .header .student-meta .profile img {
   margin-right: 15px;
 }
-.Journal-main .answer-detail > :first-child .header .question-body, .Portfolio .answer-detail > :first-child .header .question-body {
+.answer-detail > :first-child .header .question-body {
   padding: 39px 29px 21px 21px;
   color: #fff;
   background: #ff455d;
@@ -1862,44 +1867,44 @@ img {
   width: 100%;
   max-width: 900px;
 }
-.Journal-main .answer-detail > :first-child .header .question-body .title, .Portfolio .answer-detail > :first-child .header .question-body .title {
+.answer-detail > :first-child .header .question-body .title {
   font-weight: bold;
   font-size: 24px;
 }
-.Journal-main .answer-detail > :first-child .header .question-body .description, .Portfolio .answer-detail > :first-child .header .question-body .description {
+.answer-detail > :first-child .header .question-body .description {
   margin-top: 25px;
   font-size: 18px;
   line-height: 141.5%;
 }
-.Journal-main .answer-detail > :first-child .answer, .Portfolio .answer-detail > :first-child .answer {
+.answer-detail > :first-child .answer {
   display: flex;
   flex-direction: column;
 }
-.Journal-main .answer-detail > :first-child .answer .wrapper, .Portfolio .answer-detail > :first-child .answer .wrapper {
+.answer-detail > :first-child .answer .wrapper {
   display: flex;
   align-items: center;
 }
-.Journal-main .answer-detail > :first-child .answer .wrapper .answer-body, .Portfolio .answer-detail > :first-child .answer .wrapper .answer-body {
+.answer-detail > :first-child .answer .wrapper .answer-body {
   color: #9E9E9E;
   width: 100%;
   max-width: 900px;
   padding: 39px 29px 21px 21px;
   text-align: left;
 }
-.Journal-main .answer-detail > :first-child .answer .wrapper .answer-body .title, .Portfolio .answer-detail > :first-child .answer .wrapper .answer-body .title {
+.answer-detail > :first-child .answer .wrapper .answer-body .title {
   font-weight: bold;
   font-size: 24px;
 }
-.Journal-main .answer-detail > :first-child .answer .wrapper .answer-body .description, .Portfolio .answer-detail > :first-child .answer .wrapper .answer-body .description {
+.answer-detail > :first-child .answer .wrapper .answer-body .description {
   margin-top: 25px;
   font-size: 18px;
   line-height: 141.5%;
 }
-.Journal-main .answer-detail > :first-child .answer .wrapper .counter, .Portfolio .answer-detail > :first-child .answer .wrapper .counter {
+.answer-detail > :first-child .answer .wrapper .counter {
   display: flex;
   align-items: center;
 }
-.Journal-main .answer-detail > :first-child .answer .wrapper .counter .sign, .Portfolio .answer-detail > :first-child .answer .wrapper .counter .sign {
+.answer-detail > :first-child .answer .wrapper .counter .sign {
   text-align: center;
   margin: 0 25px;
   display: grid;
@@ -1915,7 +1920,7 @@ img {
   font-size: 36px;
   color: #494949;
 }
-.Journal-main .answer-detail > :first-child .answer .wrapper .counter button, .Portfolio .answer-detail > :first-child .answer .wrapper .counter button {
+.answer-detail > :first-child .answer .wrapper .counter button {
   width: 25px;
   height: 25px;
   display: none;
@@ -1923,7 +1928,7 @@ img {
   font-weight: bold;
   font-size: 36px;
 }
-.Journal-main .answer-detail > :first-child .answer .label-incorrect, .Portfolio .answer-detail > :first-child .answer .label-incorrect {
+.answer-detail > :first-child .answer .label-incorrect {
   padding-bottom: 21px;
   padding-left: 21px;
   display: none;
@@ -1931,10 +1936,10 @@ img {
   font-size: 18px;
   color: #9E9E9E;
 }
-.Journal-main .answer-detail > :first-child .answer .label-incorrect > :last-child, .Portfolio .answer-detail > :first-child .answer .label-incorrect > :last-child {
+.answer-detail > :first-child .answer .label-incorrect > :last-child {
   margin-left: 6px;
 }
-.Journal-main .answer-detail > :first-child .answer .commentary-tf, .Portfolio .answer-detail > :first-child .answer .commentary-tf {
+.answer-detail > :first-child .answer .commentary-tf {
   display: none;
   width: 100%;
   max-width: 850px;
@@ -1947,7 +1952,7 @@ img {
   padding: 15px 20px;
   font-size: 18px;
 }
-.Journal-main .answer-detail > :first-child .answer .send-button, .Portfolio .answer-detail > :first-child .answer .send-button {
+.answer-detail > :first-child .answer .send-button {
   align-self: flex-end;
   margin: 25px 25px 0 0;
   display: none;
@@ -1959,26 +1964,23 @@ img {
   line-height: 141.5%;
   border-radius: 37px;
 }
-.Journal-main .answer-detail > :first-child .active .wrapper .answer-body, .Portfolio .answer-detail > :first-child .active .wrapper .answer-body {
+.answer-detail > :first-child .active .wrapper .answer-body {
   color: #494949;
 }
-.Journal-main .answer-detail > :first-child .active .wrapper .counter, .Portfolio .answer-detail > :first-child .active .wrapper .counter {
+.answer-detail > :first-child .active .wrapper .counter {
   transform: translateX(25px);
 }
-.Journal-main .answer-detail > :first-child .active .wrapper .counter button, .Portfolio .answer-detail > :first-child .active .wrapper .counter button {
+.answer-detail > :first-child .active .wrapper .counter button {
   display: grid;
 }
-.Journal-main .answer-detail > :first-child .active .commentary-tf, .Portfolio .answer-detail > :first-child .active .commentary-tf {
+.answer-detail > :first-child .active .commentary-tf {
   display: block;
 }
-.Journal-main .answer-detail > :first-child .active .send-button, .Portfolio .answer-detail > :first-child .active .send-button {
+.answer-detail > :first-child .active .send-button {
   display: block;
 }
-.Journal-main .answer-detail > :first-child .incorrect .label-incorrect, .Portfolio .answer-detail > :first-child .incorrect .label-incorrect {
+.answer-detail > :first-child .incorrect .label-incorrect {
   display: flex;
-}
-.Journal-main button:active, .Portfolio button:active {
-  transform: translateY(1px);
 }
 
 .Organization-form {

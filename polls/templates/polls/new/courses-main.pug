@@ -1,0 +1,200 @@
+{% load static %}{% load landing_200821_filters %}
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        title Skillometer{% if title %} - {{ title }}{% endif %}
+        meta(name="viewport" content="width=device-width")
+        link(rel="icon" type="image/png" href="{% static 'assets/favicon.png' %}")
+        link(rel="stylesheet" href="{% static 'styles/index.css' %}")
+        script(src="{% static 'scripts/icons.js' %}")
+    body
+        .container
+            .header
+                a.logo(href="https://skillometer.ru")
+                    img(src="{% static 'assets/logo.svg' %}")
+                .user-block
+                    img.notification-icon(src="{% static 'assets/notification_bell.svg' %}")
+                    a(href="")
+                        img.user-icon(src="{% static 'assets/teacher_user_icon.svg' %}")
+                    .user-info
+                        .user-name=user.email
+                        .balance Баланс:&nbsp&nbsp&nbsp<b> ₽</b>
+        .panel
+            .panel-actions
+                a.panel-button.selected(href="/quests/")
+                    img(src="{% static 'assets/icon_courses.svg' %}")
+                a.panel-button(href="/webinars/")
+                    img(src="{% static 'assets/icon_webinar.svg' %}")
+                a.panel-button(href="/organization/")
+                    img(src="{% static 'assets/icon_community.svg' %}")
+                a.panel-button.notification-holder(href="/quest_members/")
+                    img(src="{% static 'assets/icon_users.svg' %}")
+                    if members_notification > 0
+                        .notification=members_notification
+                a.panel-button.notification-holder(href="/journal/")
+                    img(src="{% static 'assets/icon_board.svg' %}")
+                    if journal_notification > 0
+                        .notification=journal_notification
+            a.panel-button(href="/logout/")
+                img(src="{% static 'assets/icon_exit.svg' %}")
+        .center
+            .container
+                .content-window
+                    .content-header
+                    .Courses-main
+                        .content-title
+                            div Курсы
+                            button.round(onclick="")
+                                img(src="{% static 'assets/your-courses-arrow.svg' %}" alt="")
+                        .slider
+                            .slides-wrapper(id="slider")
+                                each category in courseCategories
+                                    a.CourseCategoryCard(style="background: linear-gradient(180deg, #030303 0%, rgba(63, 62, 62, 0) 100%), url('/static/assets/direction_image_{{category.id}}.png') no-repeat; background-size: cover" onclick="sortCoursesByDirection('{{category.id}}')")
+                                        .row
+                                            img(src='/static/assets/direction_icon_{{category.id}}.svg' alt="")
+                                            .text=category.name
+                            button.prev-btn(id="prev-btn" onclick="scrollCategories('left')")
+                                img(src="{% static 'assets/left_arrow.svg' %}" alt="")
+                            button.next-btn(id="next-btn" onclick="scrollCategories('right')")
+                                img(src="{% static 'assets/left_arrow.svg' %}" alt="")
+                        .column-left-courses
+                            .wrapper
+                                .CardsBlock
+                                    .column-left
+                                        .InfoCourseCard
+                                            .row
+                                                div Название курса:
+                                                div {% if course.name %}{{ course.name }}{% else %}&nbsp;{% endif %}
+                                            .row
+                                                div Основной тэг:
+                                                div {% if course.tag %}{{ course.tag }}{% else %}&bnsp;{% endif %}
+                                            .row
+                                                div Возрастная группа:
+                                                div {% if course.age %}{{ course.age }}{% else %}&bnsp;{% endif %}
+                                            .row
+                                                div Категория:
+                                                div {% if course.speciality %}{{ course.speciality.name }}{% else %}&bnsp;{% endif %}
+                                            .row
+                                                div Формат обучения:
+                                                div &nbsp;
+                                            .row
+                                                div Пробное занятие:
+                                                div &nbsp;
+                                            .row
+                                                div Описание:
+                                                div {% if course.description %}{{ course.description }}{% else %}&bnsp;{% endif %}
+                                            .row
+                                                div Адрес:
+                                                div {% if course.address %}{{ course.address.id|CompileAddress }}{% else %}{{ organizationAddress.id|CompileAddress }}{% endif %}
+                                            
+                                        {% comment %}
+                                        .GroupsCourseCard
+                                            .left
+                                                .chart-wrapper
+                                                    canvas(width=50 height=50 id="numberOfGroupsChart")
+                                                    .sign
+                                                .content
+                                                    .date
+                                                    .label
+                                            .right
+                                                .chart-wrapper
+                                                    canvas(width=50 height=50 id="vacantsChart")
+                                                    .sign
+                                                .content
+                                                    .date
+                                                    .label Свободных мест
+                                        .GeographyCard
+                                            .chart
+                                                canvas(width=200 height=200 id="geographyChart")
+                                            .chart-data
+                                                .title География
+                                                .description Охват учащихся
+                                            button.export-button.center(onclick="")
+                                                img(src="{% static 'assets/export_icon.svg' %}")
+                                        {% endcomment %}
+                                    .column-right
+                                        {% comment %}
+                                        .ScheduleCourseCard
+                                            img(src="{% static 'assets/schedule_icon.svg' %}" alt="")
+                                            .content
+                                                .label Расписание занятий
+                                        {% endcomment %}
+                                        .PeriodCourseCard
+                                            img(src="{% static 'assets/calendar_icon.svg' %}" alt="")
+                                            .content
+                                                .date с {{ course.dateBegin }} по {{ course.dateEnd }}
+                                                .label Период обучения
+                                        .row
+                                            .RequestsCourseCard
+                                                img(src="{% static 'assets/student_icon.svg' %}", alt="")
+                                                .content
+                                                    .date=courseMemberCount
+                                                    .label Входящих заявок
+                                            .PaymentCourseCard
+                                                .chart-wrapper
+                                                    canvas(width=50 height=50 id="paymentsChart")
+                                                    .sign ₽
+                                                .content
+                                                    .date 0
+                                                    .label Оплатили
+                                        {% comment %}
+                                        .PopularityCard
+                                            .sub-header
+                                                .left
+                                                    .title Популярность курса
+                                                    .description Охват учащихся по месяцам
+                                                .right
+                                                    .row
+                                                        .block.gray
+                                                        div Входящие заявки
+                                                    .row
+                                                        .block.red
+                                                        div Оплаты
+                                            .main(id="temporaryID")
+                                                .scale
+                                                    div 100
+                                                    div 50
+                                                    div 0
+                                                each month in months
+                                                    .pillar
+                                                        canvas(width=10 height=100)
+                                                        .month=month
+                                            button.export-button.center(onclick="")
+                                                img(src="{% static 'assets/export_icon.svg' %}")
+                                        {% endcomment %}
+                            .column-right-courses
+                                .buttons-block
+                                    a.add-button.center(href="/quest_edit/")
+                                        img(src="{% static 'assets/plus_2.svg' %}" alt="")
+                                    a.red-button.center(href="" id="course-edit-ref") Изменить
+                                    button.gray-button(onclick="deleteModal('show')") Удалить
+                                .YourCourses
+                                    .sub-header
+                                        div Ваши курсы
+                                        .filter-block
+                                            .filter-name(id="current-filter") Все
+                                            button.filter-button(onclick="sortYourCourses()" id="courses-sort-btn")
+                                                img(src="{% static 'assets/your_courses_arrow_white.svg' %}")
+                                            button.filter-button.hidden(onclick="cancelCoursesFilter()" id="courses-filter-btn")
+                                                img(src="{% static 'assets/your_courses_close_x.svg' %}")
+                                    .courses-item
+    //-                                     button.course-name Философия
+    //-                                     .controls
+    //-                                         .stars-block
+    //-                                             .active-star
+    //-                                                 img(src="{% static 'assets/star_icon_black.svg' %}")
+    //-                                         input.course-checkbox(id="checkbox-for-1" type="checkbox" onclick="changeCourseVisibility('1', this)")
+                        .delete-modal.hidden
+                            .wrapper
+                                .row
+                                    .title Удалить курс?
+                                .buttons-block
+                                    button.red-button(onclick="deleteModal('submit')") Удалить
+                                    button.gray-button.cancel(onclick="deleteModal('close')") Отмена
+//-     div.hidden(id="dataHolder")=data.username
+    
+script(src="{% static 'scripts/courses.js' %}")
+script.
+    parseData("{{ courses }}")
+
+//- script(src="{% static 'scripts/index.js' %}")

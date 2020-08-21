@@ -14,6 +14,7 @@ urlpatterns = [
     path('date/', views.current_datetime, name='datetime'),
     path('courses/', views.courses, name='courses_main'),
     path('courses_upload_files/', views.courses_upload_files, name='course_upload_files'),
+    path('answer_detail/', views.answer_detail, name="answer_detail"),
     path('test/', views.test, name="test")
 ]
 

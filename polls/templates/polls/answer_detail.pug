@@ -1,0 +1,67 @@
+| {% load static %}
+
+html(lang="ru")
+    head
+        meta(charset='UTF-8')
+        title Skillometer
+        meta(name="viewport" content="width=device-width")
+        link(rel="icon" type="image/png" href="{% static 'assets/favicon.png' %}")
+        link(rel="stylesheet" href="{% static 'styles/index.css' %}")
+        script(src="{% static 'scripts/icons.js' %}")
+    body
+        #answer-modal.answer-detail(style='opacity: 1;')
+            .wrapper(style='transform: translateY(0px); opacity: 1;')
+                .header
+                    .student-meta
+                        .profile
+                            img(src="{% static 'assets/user_icon_red.svg' %}")
+                            div Иванов Сергей
+                        div Гр. АБ-13
+                        div Задание №5
+                        div Время последнего ответа – 15:30
+                        div 30.06.20
+                    .question-body
+                        .title Задание №5
+                        .description Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу Семантика большого языкового океана. Маленький ручеек Даль журчит по всей стране и обеспечивает ее всеми необходимыми правилами. Эта парадигматическая страна, в которой жаренные члены предложения залетают прямо в рот. Даже всемогущая пунктуация не имеет власти над рыбными текстами, ведущими безорфографичный образ жизни.
+                .answer.incorrect
+                    .wrapper
+                        button.answer-body
+                            .title Ответ (1 попытка)
+                            .description Далеко далеко что то происходит, оцените на пять плз
+                        .counter
+                            button(onclick='changeMark(this, -1)') -
+                            input.sign(type='text', onfocus='setListenerForSelf(this)')
+                            button(onclick='changeMark(this, 1)') +
+                    .label-incorrect
+                        img(src="{% static 'assets/next_line_icon.svg' %}")
+                        div Тут должен быть комментарий преподавателя
+                    textarea.commentary-tf(placeholder='Добавить комментарий')
+                    button.send-button(onclick='submitMark(this)') Отправить
+                .answer.incorrect
+                    .wrapper
+                        button.answer-body
+                            .title Ответ (2 попытка)
+                            .description Это вторая попытка и ответ неверный
+                        .counter
+                            button(onclick='changeMark(this, -1)') -
+                            input.sign(type='text', onfocus='setListenerForSelf(this)')
+                            button(onclick='changeMark(this, 1)') +
+                    .label-incorrect
+                        img(src="{% static 'assets/next_line_icon.svg' %}")
+                        div Тут должен быть комментарий преподавателя
+                    textarea.commentary-tf(placeholder='Добавить комментарий')
+                    button.send-button(onclick='submitMark(this)') Отправить
+                .answer
+                    .wrapper
+                        button.answer-body(onclick='handleEditorMode(this)')
+                            .title Ответ (3 попытка)
+                            .description Это третья попытка и все должно быть верно
+                        .counter
+                            button(onclick='changeMark(this, -1)') -
+                            input.sign(type='text', onfocus='setListenerForSelf(this)')
+                            button(onclick='changeMark(this, 1)') +
+                    .label-incorrect
+                        img(src="{% static 'assets/next_line_icon.svg' %}")
+                        div undefined
+                    textarea.commentary-tf(placeholder='Добавить комментарий')
+                    button.send-button(onclick='submitMark(this)') Отправить

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="answer-detail" id="answer-modal" style="opacity: 1;">
+        <div class="wrapper" style="transform: translateY(0px); opacity: 1;">
+            <div class="header">
+                <div class="student-meta">
+                    <div class="profile">
+                        <img src="/static/assets/user_icon_red.svg">
+                        <div>Иванов Сергей</div>
+                    </div>
+                    <div>Гр. АБ-13</div>
+                    <div>Задание №5</div>
+                    <div>Время последнего ответа – 15:30</div>
+                    <div>30.06.20</div>
+                </div>
+                <div class="question-body">
+                    <div class="title">Задание №5</div>
+                    <div class="description">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу Семантика большого языкового океана. Маленький ручеек Даль журчит по всей стране и обеспечивает ее всеми необходимыми правилами. Эта парадигматическая страна, в которой жаренные члены предложения залетают прямо в рот. Даже всемогущая пунктуация не имеет власти над рыбными текстами, ведущими безорфографичный образ жизни.</div>
+                </div>
+            </div>
+            <div class="answer incorrect ">
+                <div class="wrapper">
+                    <button class="answer-body">
+                        <div class="title">Ответ (1 попытка)</div>
+                        <div class="description">Далеко далеко что то происходит, оцените на пять плз</div>
+                    </button>
+                    <div class="counter">
+                        <button onclick="changeMark(this, -1)">-</button>
+                        <input type="text" class="sign" onfocus="setListenerForSelf(this)">
+                        <button onclick="changeMark(this, 1)">+</button>
+                    </div>
+                </div>
+                <div class="label-incorrect">
+                    <img src="/static/assets/next_line_icon.svg">
+                    <div>Тут должен быть комментарий преподавателя</div>
+                </div>
+                <textarea class="commentary-tf" placeholder="Добавить комментарий"></textarea>
+                <button class="send-button" onclick="submitMark(this)">Отправить</button>
+            </div>
+            <div class="answer incorrect ">
+                <div class="wrapper">
+                    <button class="answer-body">
+                        <div class="title">Ответ (2 попытка)</div>
+                        <div class="description">Это вторая попытка и ответ неверный</div>
+                    </button>
+                    <div class="counter">
+                        <button onclick="changeMark(this, -1)">-</button>
+                        <input type="text" class="sign" onfocus="setListenerForSelf(this)">
+                        <button onclick="changeMark(this, 1)">+</button>
+                    </div>
+                </div>
+                <div class="label-incorrect">
+                    <img src="/static/assets/next_line_icon.svg">
+                    <div>Тут должен быть комментарий преподавателя</div>
+                </div>
+                <textarea class="commentary-tf" placeholder="Добавить комментарий"></textarea>
+                <button class="send-button" onclick="submitMark(this)">Отправить</button>
+            </div>
+            <div class="answer  ">
+                <div class="wrapper">
+                    <button class="answer-body" onclick="handleEditorMode(this)">
+                        <div class="title">Ответ (3 попытка)</div>
+                        <div class="description">Это третья попытка и все должно быть верно</div>
+                    </button>
+                    <div class="counter">
+                        <button onclick="changeMark(this, -1)">-</button>
+                        <input type="text" class="sign" onfocus="setListenerForSelf(this)">
+                        <button onclick="changeMark(this, 1)">+</button>
+                    </div>
+                </div>
+                <div class="label-incorrect">
+                    <img src="/static/assets/next_line_icon.svg">
+                    <div>undefined</div>
+                </div>
+                <textarea class="commentary-tf" placeholder="Добавить комментарий"></textarea>
+                <button class="send-button" onclick="submitMark(this)">Отправить</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

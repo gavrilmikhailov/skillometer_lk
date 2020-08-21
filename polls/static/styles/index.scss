@@ -1734,7 +1734,8 @@ img {
             overflow: hidden;
           }
         }
-        >:last-child {
+        a {
+          z-index: 10;
           justify-self: end;
         }
         >:not(:first-child) {
@@ -1751,7 +1752,13 @@ img {
       }
     }
   }
-  .answer-detail {
+
+  button:active {
+    transform: translateY(1px);
+  }
+}
+
+.answer-detail {
     position: fixed;
     background: rgba(0, 0, 0, .5);
     top: 0;
@@ -1926,11 +1933,6 @@ img {
       }
     }
   }
-
-  button:active {
-    transform: translateY(1px);
-  }
-}
 
 .Organization-form {
   display: flex;

@@ -19,7 +19,7 @@ html(lang="ru")
                         img.user-icon(src="{% static 'assets/teacher_user_icon.svg' %}")
                     .user-info
                         .user-name=data.username
-                        .balance Баланс:&nbsp&nbsp&nbsp<b>{{ data.username }} ₽</b>
+                        .balance Баланс:&nbsp&nbsp&nbsp<b>"{{data.username}}" ₽</b>
 
         .panel
             .panel-actions
@@ -54,21 +54,21 @@ html(lang="ru")
                                         img(src="{% static 'assets/clock_small.svg' %}" alt="")
                                         div=data.lesson.duration
                                     if data.lesson.scores
-                                        .passing-score="data.lesson.scores.max Баллов (проходной балл {{ data.lesson.scores.passing)"
+                                        .passing-score "{{data.lesson.scores.max}}" Баллов (проходной балл "{{data.lesson.scores.passing}}")
                             .double-block
                                 div
-                                    input(type="text" id="lesson-choose-input" readonly value="{{ data.lesson.title }}")
+                                    input(type="text" id="lesson-choose-input" readonly value="{{data.lesson.title}}")
                                     .popup-list.lesson-choose.hidden
-                                        each lesson, index in ["Занятие №1", "Занятие №2"]
-                                            button.list-item(onclick="chooseInJournal('pick-lesson', '{{ index }}')")=lesson
+                                        each lesson, index in data.lessons
+                                            button.list-item(onclick="chooseInJournal('pick-lesson', '{{index}}')")=lesson
                                     button.input-button.lesson(onclick="chooseInJournal('toggle-lessons')")
                                         img(src="{% static 'assets/arrow_down.svg' %}")
                                 if data.lesson.course
                                     div
                                         .course-name-block
-                                            div="Курс: {{data.lesson.course.name}}"
+                                            div Курс: "{{data.lesson.course.name}}"
                                             img(src="{% static 'assets/direction_icon_1.svg' %}")
-                                        .number-of-questions="{{data.lesson.course.numberOfTasks}} заданий"
+                                        .number-of-questions "{{data.lesson.course.numberOfTasks}}" заданий
                             .small-cards-block
                                 .small-card
                                     img(src="{% static 'assets/exam_icon_1.svg' %}" alt="")
@@ -102,10 +102,10 @@ html(lang="ru")
                                         b(id='total-failed-students')=data.lesson.failed
                         .presence-block
                             .presence(id="presence-1")
-                                button(onclick="presenceHandler(0)")="Присустствовали ({{ data.lesson.answers.length }})"
+                                button(onclick="presenceHandler(0)") Присустствовали ({{data.lesson.answersLen}})
                                 .indicator
                             .presence(id="presence-2")
-                                button(onclick="presenceHandler(1)")="Не присутствовали ({{ data.lesson.answersMissing.length }})"
+                                button(onclick="presenceHandler(1)") Не присутствовали ({{data.lesson.answersMissingLen}})
                                 .indicator
                         .search-filter-block
                             .search-block
@@ -153,18 +153,18 @@ html(lang="ru")
                                 div Детали
                             .cards-wrapper
                                 each answer in data.lesson.answers
-                                    .student-card(id=answer.id onclick="selectStudent('{{ answer.id }}')")
+                                    .student-card(id="{{answer.id}}" onclick="selectStudent('{{answer.id}}')")
                                         .student-block
                                             .student-icon
-                                                img(src=answer.image)
+                                                img(src="{{answer.image}}")
                                             .student-name=answer.name
                                         div=answer.group
                                         div=answer.attemptsNumber
-                                        div='№' + answer.taskNumber
-                                        div(style="color: {{ '#FF455D' }}")=answer.score
+                                        div № {{answer.taskNumber}}
+                                        div(style="color: '#FF455D'")=answer.score
                                         div=answer.time
                                         div=answer.date
-                                        button(onclick="showAnswerDetail('{{ answer.id }}')")
+                                        a(href="/answer/{{answer.id}}")
                                             img(src="{% static 'assets/arrow_right.svg' %}" alt="")
                         .main-block(id="page-2")
                             .sub-header
@@ -199,18 +199,18 @@ html(lang="ru")
                                 div Детали
                             .cards-wrapper
                                 each answer in data.lesson.answersMissing
-                                    .student-card(id=answer.id onclick="selectMissingStudent('{{ answer.id }}')")
+                                    .student-card(id="{{answer.id}}" onclick="selectMissingStudent('{{answer.id}}')")
                                         .student-block
                                             .student-icon
-                                                img(src=answer.image)
+                                                img(src="{{answer.image}}")
                                             .student-name=answer.name
                                         div=answer.group
                                         div=answer.attemptsNumber
-                                        div='№' + answer.taskNumber
+                                        div № "{{answer.taskNumber}}"
                                         div(style="color: '#FF455D'")=answer.score
                                         div=answer.time
                                         div=answer.date
-                                        button(onclick="showAnswerDetail('{{ answer.id }}')")
+                                        a(href="/answer/{{answer.id}}")
                                             img(src="{% static 'assets/arrow_right.svg' %}" alt="")
                         .answer-detail.invisible(id="answer-modal")
                             .wrapper

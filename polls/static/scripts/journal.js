@@ -48,6 +48,7 @@ let selectedStudents = []
 
 // Выбор студента на первой вкладке
 function selectStudent(id) {
+
     let cards = document.querySelectorAll('#page-1 .cards-wrapper .student-card')
     let element = document.getElementById(`${id}`)
     let selectionExists = false
