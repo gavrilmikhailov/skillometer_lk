@@ -124,7 +124,9 @@ function updateYourCourses(courses) {
 
         let courseName = document.createElement('button')
         courseName.className = `course-name ${course.isEnabled ? "" : "course-hidden"}`
-        courseName.innerHTML = course.name
+        let paragraph = document.createElement('p')
+        paragraph.innerHTML = course.name
+        courseName.append(paragraph)
         // courseName.href= `/courses/${course.id}`
         courseName.setAttribute('onclick', `location.href = '/courses/${course.id}'`)
 

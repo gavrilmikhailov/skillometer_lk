@@ -63,16 +63,21 @@ html(lang="ru")
                                 .CardsBlock
                                     .column-left
                                         .InfoCourseCard
-                                            .left-column
+                                            .row
                                                 div Основной тэг:
-                                                div Дополнительный тэг:
-                                                div Возрастная группа:
-                                                div Формат обучения:
-                                            .right-column
                                                 div=data.course.info.mainTag
+                                            .row
+                                                div Дополнительный тэг:
                                                 div=data.course.info.secondaryTag
+                                            .row
+                                                div Возрастная группа:
                                                 div=data.course.info.ageGroup
+                                            .row
+                                                div Формат обучения:
                                                 div=data.course.info.educationFormat
+                                            .row
+                                                duv Описание:
+                                                div=data.course.info.description
                                         .GroupsCourseCard
                                             .left
                                                 .chart-wrapper

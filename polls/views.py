@@ -82,7 +82,7 @@ def courses(request, id_category=None, id_course=None):
             ],
             "courses": [
                 {
-                    "name": "Программирование",
+                    "name": "j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j ",
                     "rating": 5,
                     "isEnabled": False,
                     "id": 452,
@@ -129,7 +129,7 @@ def courses(request, id_category=None, id_course=None):
                         "category": "Естественно-научные",
                         "educationFormat": "Онлайн",
                         "trialLesson": "Есть",
-                        "description": "Программирование с нуля",
+                        "description": "j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j ",
                         "address": "г. Якутск, ул. Ленина 1, каб 23"
                     },
                     "schedule": [

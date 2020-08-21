@@ -878,8 +878,9 @@ img {
   background: #FAF8F8;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  padding: 36px 7px 30px 7px;
+  padding: 36px 14px 30px 14px;
   display: flex;
+  flex-direction: column;
   font-family: "Arimo", sans-serif;
   font-style: normal;
   font-size: 18px;
@@ -890,29 +891,22 @@ img {
     width: 637px;
   }
 }
-.Courses-main .InfoCourseCard .left-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-basis: 40%;
-  font-weight: normal;
-  text-align: right;
-  color: #828282;
-}
-.Courses-main .InfoCourseCard .left-column > :not(:first-child) {
+.Courses-main .InfoCourseCard > :not(:first-child) {
   margin-top: 8px;
 }
-.Courses-main .InfoCourseCard .right-column {
-  padding-left: 18px;
+.Courses-main .InfoCourseCard .row {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+}
+.Courses-main .InfoCourseCard .row > :first-child {
+  flex-basis: 40%;
+  color: #828282;
+  text-align: right;
+}
+.Courses-main .InfoCourseCard .row > :last-child {
+  padding-left: 18px;
   flex-basis: 60%;
   font-weight: bold;
   color: #494949;
-}
-.Courses-main .InfoCourseCard .right-column > :not(:first-child) {
-  margin-top: 8px;
 }
 .Courses-main .RequestsCourseCard {
   width: 280px;
@@ -1380,6 +1374,12 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.YourCourses .courses-item p {
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: left;
 }
 .YourCourses .courses-item .controls {
   display: flex;
