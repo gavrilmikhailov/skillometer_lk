@@ -18,7 +18,7 @@ html(lang="ru")
                     a(href="/change_password/")
                         img.user-icon(src="{% static 'assets/teacher_user_icon.svg' %}")
                     .user-info
-                        .user-name=username
+                        .user-name=data.username
                         .balance Баланс:&nbsp&nbsp&nbsp<b>{{data.balance}} ₽</b>
         .panel
             .panel-actions
@@ -50,7 +50,7 @@ html(lang="ru")
                         .slider
                             .slides-wrapper(id="slider")
                                 each category in data.courseCategories
-                                    a.CourseCategoryCard(style="background: linear-gradient(180deg, #030303 0%, rgba(63, 62, 62, 0) 100%), url('/static/assets/direction_image_{{category.id}}.png') no-repeat; background-size: cover" onclick="sortCoursesByDirection('{{category.id}}')")
+                                    a.CourseCategoryCard(style="background: linear-gradient(180deg, #030303 0%, rgba(63, 62, 62, 0) 100%), url('/static/assets/direction_image_{{category.id}}.png') center no-repeat; background-size: cover" onclick="sortCoursesByDirection('{{category.id}}')")
                                         .row
                                             img(src='/static/assets/direction_icon_{{category.id}}.svg' alt="")
                                             .text=category.title
@@ -166,12 +166,6 @@ html(lang="ru")
                                             button.filter-button.hidden(onclick="cancelCoursesFilter()" id="courses-filter-btn")
                                                 img(src="{% static 'assets/your_courses_close_x.svg' %}")
                                     .courses-item
-    //-                                     button.course-name Философия
-    //-                                     .controls
-    //-                                         .stars-block
-    //-                                             .active-star
-    //-                                                 img(src="{% static 'assets/star_icon_black.svg' %}")
-    //-                                         input.course-checkbox(id="checkbox-for-1" type="checkbox" onclick="changeCourseVisibility('1', this)")
                         .delete-modal.hidden
                             .wrapper
                                 .row
