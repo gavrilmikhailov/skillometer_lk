@@ -1,58 +1,53 @@
 | {% load static %}
--
-    username = 'example-mail@gmail.com'
-    members_notification = 0
-    journal_notification = 0
-    balance = 1200
 
 html(lang="ru")
-head
-    meta(charset="UTF-8")
-    title Skillometer – Личный кабинет
-    meta(name="viewport" content="width=device-width")
-    link(rel="stylesheet" href="{% static 'styles/index.css' %}")
-    script(src="{% static 'scripts/icons.js' %}")
-body
-    .container
-        .header
-            a.logo(href="https://skillometer.ru")
-                img(src="{% static 'assets/logo.svg' %}")
-            .user-block
-                img.notification-icon(src="{% static 'assets/notification_bell.svg' %}")
-                a(href="/change_password/")
-                    img.user-icon(src="{% static 'assets/teacher_user_icon.svg' %}")
-                .user-info
-                    .user-name=username
-                    .balance Баланс:&nbsp&nbsp&nbsp<b>#{balance || 0} ₽</b>
-    .panel
-        .panel-actions
-            a.panel-button.selected(href="/quests/")
-                img(src="{% static 'assets/icon_courses.svg' %}")
-            a.panel-button(href="/webinars/")
-                img(src="{% static 'assets/icon_webinar.svg' %}")
-            a.panel-button(href="/organization/")
-                img(src="{% static 'assets/icon_community.svg' %}")
-            a.panel-button.notification-holder(href="/quest_members/")
-                img(src="{% static 'assets/icon_users.svg' %}")
-                if members_notification > 0
-                    .notification=members_notification
-            a.panel-button.notification-holder(href="/journal/")
-                img(src="{% static 'assets/icon_board.svg' %}")
-                if journal_notification > 0
-                    .notification=journal_notification
-        a.panel-button(href="/logout/")
-            img(src="{% static 'assets/icon_exit.svg' %}")
-    .center
+    head
+        meta(charset="UTF-8")
+        title Skillometer – Личный кабинет
+        meta(name="viewport" content="width=device-width")
+        link(rel="stylesheet" href="{% static 'styles/index.css' %}")
+        script(src="{% static 'scripts/icons.js' %}")
+    body
         .container
-            .content-window
-                .content-header
-                .Courses-empty
-                    .content-title
-                        div Курсы
-                        a.round(href="/quest_edit/")
-                            img(src="{% static 'assets/plus.svg' %}" alt="")
-                    .placeholder Пока тут ничего нет
+            .header
+                a.logo(href="https://skillometer.ru")
+                    img(src="{% static 'assets/logo.svg' %}")
+                .user-block
+                    img.notification-icon(src="{% static 'assets/notification_bell.svg' %}")
+                    a(href="/change_password/")
+                        img.user-icon(src="{% static 'assets/teacher_user_icon.svg' %}")
+                    .user-info
+                        .user-name=data.username
+                        .balance Баланс:&nbsp&nbsp&nbsp<b>{{data.balance}} ₽</b>
+        .panel
+            .panel-actions
+                a.panel-button.selected(href="/quests/")
+                    img(src="{% static 'assets/icon_courses.svg' %}")
+                a.panel-button(href="/webinars/")
+                    img(src="{% static 'assets/icon_webinar.svg' %}")
+                a.panel-button(href="/organization/")
+                    img(src="{% static 'assets/icon_community.svg' %}")
+                a.panel-button.notification-holder(href="/quest_members/")
+                    img(src="{% static 'assets/icon_users.svg' %}")
+                    if data.members_notification > 0
+                        .notification=data.members_notification
+                a.panel-button.notification-holder(href="/journal/")
+                    img(src="{% static 'assets/icon_board.svg' %}")
+                    if data.journal_notification > 0
+                        .notification=data.journal_notification
+            a.panel-button(href="/logout/")
+                img(src="{% static 'assets/icon_exit.svg' %}")
+        .center
+            .container
+                .content-window
+                    .content-header
+                    .Courses-empty
+                        .content-title
+                            div Курсы
+                            a.round(href="/quest_edit/")
+                                img(src="{% static 'assets/plus.svg' %}" alt="")
+                        .placeholder Пока тут ничего нет
 
-script(src="{% static 'scripts/courses.js' %}")
-script(src="{% static 'scripts/courses_edit.js' %}")
-script(src="{% static 'scripts/index.js' %}")
+        script(src="{% static 'scripts/courses.js' %}")
+        script(src="{% static 'scripts/courses_edit.js' %}")
+        script(src="{% static 'scripts/index.js' %}")

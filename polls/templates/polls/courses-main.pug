@@ -30,11 +30,11 @@ html(lang="ru")
                     img(src="{% static 'assets/icon_community.svg' %}")
                 a.panel-button.notification-holder(href="/quest_members/")
                     img(src="{% static 'assets/icon_users.svg' %}")
-                    if members_notification > 0
+                    if data.members_notification > 0
                         .notification=members_notification
                 a.panel-button.notification-holder(href="/journal/")
                     img(src="{% static 'assets/icon_board.svg' %}")
-                    if journal_notification > 0
+                    if data.journal_notification > 0
                         .notification=journal_notification
             a.panel-button(href="/logout/")
                 img(src="{% static 'assets/icon_exit.svg' %}")

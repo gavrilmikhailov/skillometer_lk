@@ -6,11 +6,60 @@ import json
 
 # Create your views here.
 def courses_edit(request):
-    return render(request, 'polls/courses_edit.html')
+    def CompileJSON():
+        res = {
+            "username": 'example-mail@gmail.com',
+            "members_notification": 0,
+            "journal_notification": 0,
+            "balance": 1330,
+
+            "direction": "Инженерные и ИТ",
+            "directions": [
+                "Естественно научные",
+                "Инженерные и ИТ",
+                "Предпринимательские",
+                "Социально-общественные",
+                "Творчество",
+                "Физкультурно-спортивные",
+                "Языковые"
+            ],
+            "directionId": 0,
+            "tag": "#someTag",
+            "name": "Rocket Science",
+            "ageGroup": "Для школьников",
+            "ageGroupNumbers": "50-55",
+            "description": "Какое то описание",
+            "beginDate": "2020-09-25",
+            "endDate": "2020-10-10",
+            "address": "Адрес №3",
+            "addresses": [
+                "Адрес №1",
+                "Адрес №2",
+                "Адрес №3"
+            ],
+            "images": [
+                "/static/assets/Aristotle.jpg",
+                "/static/assets/Aristotle.jpg",
+                "/static/assets/Aristotle.jpg"
+            ]
+        }
+        return res
+    data = CompileJSON()
+    return (render(request, 'polls/courses_edit.pug', locals()))
 
 
 def courses_empty(request):
-    return render(request, 'polls/courses_empty.html')
+    def CompileJSON():
+        res = {
+            "username": 'example-mail@gmail.com',
+            "members_notification": 999,
+            "journal_notification": 10,
+            "balance": 1330,
+        }
+        return res
+
+    data = CompileJSON()
+    return (render(request, 'polls/courses_empty.pug', locals()))
 
 
 def courses(request, id_category=None, id_course=None):
@@ -23,13 +72,13 @@ def courses(request, id_category=None, id_course=None):
             "months": ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'],
 
             "courseCategories": [
-                {'title': "Естественно-научные", 'id': 1},
-                {'title': "Инженерные и ИТ", 'id': 2},
-                {'title': "Предпринимательские", 'id': 3},
-                {'title': "Социально-общественные", 'id': 4},
-                {'title': "Творчество", 'id': 5},
-                {'title': "Физкультурно-спортивные", 'id': 6},
-                {'title': "Языковые", 'id': 7},
+                {'title': "Физкультурно-спортивные", 'id': 1},
+                {'title': "Естественно-научные", 'id': 2},
+                {'title': "Социально-спортивные", 'id': 3},
+                {'title': "Инженерные и ИТ", 'id': 4},
+                {'title': "Языковые", 'id': 5},
+                {'title': "Творчество", 'id': 6},
+                {'title': "Предпринимательские", 'id': 7},
             ],
             "courses": [
                 {
@@ -232,7 +281,7 @@ def courses(request, id_category=None, id_course=None):
                 },
         }
         return (res)
-
+    # title = data if cond else expr2
     data = CompileJSON()
     return (render(request, 'polls/courses-main.pug', locals()))
 
@@ -254,7 +303,17 @@ def participants(request):
 
 
 def festivals(request):
-    return render(request, 'polls/festivals.html')
+    def CompileJSON():
+        res = {
+            "username": 'example-mail@gmail.com',
+            "members_notification": 999,
+            "journal_notification": 0,
+            "balance": 1330,
+        }
+        return res
+
+    data = CompileJSON()
+    return (render(request, 'polls/festivals.pug', locals()))
 
 
 def test(request):
@@ -263,6 +322,20 @@ def test(request):
 
 def portfolio(request):
     return render(request, 'polls/portfolio.html')
+
+
+def courses_upload_files(request):
+    def CompileJSON():
+        res = {
+            "username": 'example-mail@gmail.com',
+            "members_notification": 999,
+            "journal_notification": 10,
+            "balance": 1330,
+        }
+        return res
+
+    data = CompileJSON()
+    return (render(request, 'polls/courses_upload_files.pug', locals()))
 
 
 def current_datetime(request):

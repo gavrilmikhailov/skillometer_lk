@@ -1,9 +1,5 @@
 | {% load static %}
--
-    username = 'example-mail@gmail.com'
-    members_notification = 0
-    journal_notification = 0
-    balance = 1200
+
 html(lang="ru")
     head
         meta(charset="UTF-8")
@@ -22,8 +18,8 @@ html(lang="ru")
                     a(href="/change_password/")
                         img.user-icon(src="{% static 'assets/teacher_user_icon.svg' %}")
                     .user-info
-                        .user-name=username
-                        .balance Баланс:&nbsp&nbsp&nbsp<b>#{balance || 0} ₽</b>
+                        .user-name=data.username
+                        .balance Баланс:&nbsp&nbsp&nbsp<b>{{ data.balance }} ₽</b>
 
         .panel
             .panel-actions
@@ -35,12 +31,12 @@ html(lang="ru")
                     img(src="{% static 'assets/icon_community.svg' %}")
                 a.panel-button.notification-holder(href="/quest_members/")
                     img(src="{% static 'assets/icon_users.svg' %}")
-                    if members_notification > 0
-                        .notification=members_notification
+                    if data.members_notification > 0
+                        .notification=data.members_notification
                 a.panel-button.notification-holder(href="/journal/")
                     img(src="{% static 'assets/icon_board.svg' %}")
-                    if journal_notification > 0
-                        .notification=journal_notification
+                    if data.journal_notification > 0
+                        .notification=data.journal_notification
             a.panel-button(href="/logout/")
                 img(src="{% static 'assets/icon_exit.svg' %}")
         .center

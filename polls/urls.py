@@ -13,6 +13,7 @@ urlpatterns = [
     path('portfolio/', views.portfolio, name='portfolio'),
     path('date/', views.current_datetime, name='datetime'),
     path('courses/', views.courses, name='courses_main'),
+    path('courses_upload_files/', views.courses_upload_files, name='course_upload_files'),
     path('test/', views.test, name="test")
 ]
 
