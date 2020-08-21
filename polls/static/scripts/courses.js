@@ -39,77 +39,77 @@ function parseData(data) {
         data = data.replace('True', 'true')
     }
     let newData = JSON.parse(data)
-    selectCourse(newData.course, newData.courses)
+    selectCourse(newData.courses)
 }
 
 
 // Выбор курса на правой панели
-function selectCourse(course, courses) {
+function selectCourse(courses) {
 
-    let infoCardItems = document.querySelector('.InfoCourseCard').lastElementChild.children
-    for (let i = 0; i < infoCardItems.length; i++) {
-        let text = ""
-        switch (i) {
-            case 0: text = course.info.mainTag; break
-            case 1: text = course.info.secondaryTag; break
-            case 2: text = course.info.ageGroup; break
-            case 3: text = course.info.category; break
-            case 4: text = course.info.educationFormat; break
-            case 5: text = course.info.trialLesson; break
-            case 6: text = course.info.description; break
-            case 7: text = course.info.address; break
-            default: break
-        }
-        infoCardItems[i].innerHTML = text
-    }
-
-    let scheduleCard = document.querySelector('.ScheduleCourseCard').lastElementChild
-    while(scheduleCard.firstElementChild.classList.contains('date-time'))
-        scheduleCard.removeChild(scheduleCard.firstElementChild)
-    let lastChild = scheduleCard.lastElementChild
-    for (let i = 0; i < course.schedule.length; i++) {
-        let newLesson = document.createElement('div')
-        newLesson.className = 'date-time'
-        newLesson.innerHTML = `<b>${course.schedule[i].date}</b> ${course.schedule[i].address}`
-        scheduleCard.insertBefore(newLesson, lastChild)
-    }
-
-    let periodCard = document.querySelector('.PeriodCourseCard .content .date')
-    periodCard.innerHTML = `с ${course.educationPeriod.start} по ${course.educationPeriod.end}`
-
-    let requestsCard = document.querySelector('.RequestsCourseCard .content .date')
-    requestsCard.innerHTML = course.requests
-
-    let paymentsCard = document.querySelector('.PaymentCourseCard .content .date')
-    paymentsCard.innerHTML = (course.charts.payments.paid / course.charts.payments.total * 100).toFixed(0) + '%'
-
-    let groupsCard = document.querySelector('.GroupsCourseCard')
-    let signs = groupsCard.getElementsByClassName('sign')
-    let titles = groupsCard.getElementsByClassName('date')
-    let descriptions = groupsCard.getElementsByClassName('label')
-    signs[0].innerHTML = course.groupsCapacity
-    signs[1].innerHTML = course.places.occupied
-    titles[0].innerHTML = course.numberOfGroups
-    titles[1].innerHTML = course.places.available
-    descriptions[0].innerHTML = `Группы (по ${course.groupsCapacity} чел)`
-
-    drawCharts()
+    // let infoCardItems = document.querySelector('.InfoCourseCard').lastElementChild.children
+    // for (let i = 0; i < infoCardItems.length; i++) {
+    //     let text = ""
+    //     switch (i) {
+    //         case 0: text = course.info.mainTag; break
+    //         case 1: text = course.info.secondaryTag; break
+    //         case 2: text = course.info.ageGroup; break
+    //         case 3: text = course.info.category; break
+    //         case 4: text = course.info.educationFormat; break
+    //         case 5: text = course.info.trialLesson; break
+    //         case 6: text = course.info.description; break
+    //         case 7: text = course.info.address; break
+    //         default: break
+    //     }
+    //     infoCardItems[i].innerHTML = text
+    // }
+    //
+    // let scheduleCard = document.querySelector('.ScheduleCourseCard').lastElementChild
+    // while(scheduleCard.firstElementChild.classList.contains('date-time'))
+    //     scheduleCard.removeChild(scheduleCard.firstElementChild)
+    // let lastChild = scheduleCard.lastElementChild
+    // for (let i = 0; i < course.schedule.length; i++) {
+    //     let newLesson = document.createElement('div')
+    //     newLesson.className = 'date-time'
+    //     newLesson.innerHTML = `<b>${course.schedule[i].date}</b> ${course.schedule[i].address}`
+    //     scheduleCard.insertBefore(newLesson, lastChild)
+    // }
+    //
+    // let periodCard = document.querySelector('.PeriodCourseCard .content .date')
+    // periodCard.innerHTML = `с ${course.educationPeriod.start} по ${course.educationPeriod.end}`
+    //
+    // let requestsCard = document.querySelector('.RequestsCourseCard .content .date')
+    // requestsCard.innerHTML = course.requests
+    //
+    // let paymentsCard = document.querySelector('.PaymentCourseCard .content .date')
+    // paymentsCard.innerHTML = (course.charts.payments.paid / course.charts.payments.total * 100).toFixed(0) + '%'
+    //
+    // let groupsCard = document.querySelector('.GroupsCourseCard')
+    // let signs = groupsCard.getElementsByClassName('sign')
+    // let titles = groupsCard.getElementsByClassName('date')
+    // let descriptions = groupsCard.getElementsByClassName('label')
+    // signs[0].innerHTML = course.groupsCapacity
+    // signs[1].innerHTML = course.places.occupied
+    // titles[0].innerHTML = course.numberOfGroups
+    // titles[1].innerHTML = course.places.available
+    // descriptions[0].innerHTML = `Группы (по ${course.groupsCapacity} чел)`
+    //
+    // drawCharts()
     updateYourCourses(courses)
 
-    function drawCharts() {
-        drawGeographyChart(course.charts.geography)
-        drawPaymentsChart(course.charts.payments)
-        drawNumberOfGroupsChart(course.charts.groups)
-        drawVacantsChart(course.charts.vacants)
-        drawPopularityChart(course.charts.popularity)
-    }
-
-    let courseNames = document.querySelector('.YourCourses').children
-    for (let i = 0; i < courseNames.length; i++)
-        courseNames[i].classList.remove('selected')
-    courseNames[observedCourseIndex + 1].classList.add('selected')
-    let changeRef = document.getElementById('course-edit-ref')
-    changeRef.setAttribute('href', `/quests_edit/${course.id}`)
+    // function drawCharts() {
+    //     drawGeographyChart(course.charts.geography)
+    //     drawPaymentsChart(course.charts.payments)
+    //     drawNumberOfGroupsChart(course.charts.groups)
+    //     drawVacantsChart(course.charts.vacants)
+    //     drawPopularityChart(course.charts.popularity)
+    // }
+    //
+    // let courseNames = document.querySelector('.YourCourses').children
+    // for (let i = 0; i < courseNames.length; i++)
+    //     courseNames[i].classList.remove('selected')
+    // courseNames[observedCourseIndex + 1].classList.add('selected')
+    // let changeRef = document.getElementById('course-edit-ref')
+    // changeRef.setAttribute('href', `/quests_edit/${course.id}`)
 }
 
 // Обновление списка курсов на правой панели

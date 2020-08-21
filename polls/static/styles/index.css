@@ -874,7 +874,6 @@ img {
   margin-top: 25px;
 }
 .Courses-main .InfoCourseCard {
-  height: 319px;
   width: 579px;
   background: #FAF8F8;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -900,6 +899,9 @@ img {
   text-align: right;
   color: #828282;
 }
+.Courses-main .InfoCourseCard .left-column > :not(:first-child) {
+  margin-top: 8px;
+}
 .Courses-main .InfoCourseCard .right-column {
   padding-left: 18px;
   display: flex;
@@ -908,6 +910,9 @@ img {
   flex-basis: 60%;
   font-weight: bold;
   color: #494949;
+}
+.Courses-main .InfoCourseCard .right-column > :not(:first-child) {
+  margin-top: 8px;
 }
 .Courses-main .RequestsCourseCard {
   width: 280px;
