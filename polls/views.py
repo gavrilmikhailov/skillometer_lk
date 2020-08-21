@@ -86,12 +86,14 @@ def courses(request, id_category=None, id_course=None):
                     "rating": 5,
                     "isEnabled": False,
                     "id": 452,
+                    "selected": False,
                     "directionId": 1
                 },
                 {
                     "name": "Философия",
                     "rating": 3,
                     "isEnabled": True,
+                    "selected": True,
                     "id": 123,
                     "directionId": 3
                 },
@@ -99,6 +101,7 @@ def courses(request, id_category=None, id_course=None):
                     "name": "Экономика",
                     "rating": 2,
                     "isEnabled": False,
+                    "selected": False,
                     "id": 4,
                     "directionId": 2
                 },
@@ -106,6 +109,7 @@ def courses(request, id_category=None, id_course=None):
                     "name": "Юриспруденция",
                     "rating": 1,
                     "isEnabled": True,
+                    "selected": False,
                     "id": 56,
                     "directionId": 6
                 },
@@ -113,6 +117,7 @@ def courses(request, id_category=None, id_course=None):
                     "name": "Физическая культура",
                     "rating": 1,
                     "isEnabled": False,
+                    "selected": False,
                     "id": 53,
                     "directionId": 6
                 }

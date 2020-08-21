@@ -54,7 +54,7 @@ html(lang="ru")
                                         img(src="{% static 'assets/clock_small.svg' %}" alt="")
                                         div=data.lesson.duration
                                     if data.lesson.scores
-                                        .passing-score="{{ data.lesson.scores.max }} Баллов (проходной балл {{ data.lesson.scores.passing }})"
+                                        .passing-score="data.lesson.scores.max Баллов (проходной балл {{ data.lesson.scores.passing)"
                             .double-block
                                 div
                                     input(type="text" id="lesson-choose-input" readonly value="{{ data.lesson.title }}")

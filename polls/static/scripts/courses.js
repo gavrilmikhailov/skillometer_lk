@@ -122,6 +122,9 @@ function updateYourCourses(courses) {
         let courseItem = document.createElement('div')
         courseItem.classList.add('courses-item')
 
+        if (course.selected)
+            courseItem.classList.add('selected')
+
         let courseName = document.createElement('button')
         courseName.className = `course-name ${course.isEnabled ? "" : "course-hidden"}`
         let paragraph = document.createElement('p')
@@ -241,7 +244,19 @@ function sortCoursesByDirection(category) {
     }
 
     let label = document.getElementById('current-filter')
-    label.innerHTML = category
+
+    let courseName = ""
+    switch (category) {
+        case "1": courseName = "Физкультурно-спортивные"; break
+        case "2": courseName = "Естественно-научные"; break
+        case "3": courseName = "Социально-общественные"; break
+        case "4": courseName = "Инженерные и ИТ"; break
+        case "5": courseName = "Языковые"; break
+        case "6": courseName = "Творчество"; break
+        case "7": courseName = "Предпринимательские"; break
+        default: courseName = "Все"; break
+    }
+    label.innerHTML = courseName
 
     let sortBtn = document.getElementById('courses-sort-btn')
     let filterBtn = document.getElementById('courses-filter-btn')
