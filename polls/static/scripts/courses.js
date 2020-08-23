@@ -1,6 +1,14 @@
 // Наблюдаемый курс
 let observedCourseIndex = 0
 
+function coursesMainFirstResponder() {
+
+    let paymentsPercentage = document.querySelector('#paymentsChart').getAttribute('chart')
+    let vacantsPercentage = document.querySelector('#vacantsChart').getAttribute('chart')
+
+    drawPaymentsChart(paymentsPercentage)
+    drawVacantsChart(vacantsPercentage)
+}
 
 // Для перетасовки карт на < (1600х900)
 function screenMediaHandler() {
@@ -339,15 +347,15 @@ function drawGeographyChart(dataArray) {
 }
 
 // Диаграмма ОПЛАТИЛИ (25% Оплатили)
-function drawPaymentsChart(payments) {
+function drawPaymentsChart(percentage) {
     let ctx = document.querySelector('#paymentsChart').getContext('2d')
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     const shift = -Math.PI / 2
     ctx.lineWidth = 6; // толщина линии
     let startAngle = 0
 
-    let percentage = payments.paid / payments.total * 100
-    if (percentage == null) {
+    // let percentage = payments.paid / payments.total * 100
+    if (percentage === null) {
         ctx.beginPath()
         ctx.strokeStyle = '#C4C4C4'
         ctx.arc(25,25,22, shift, 0.0628 * 101 + shift,false);
@@ -396,14 +404,14 @@ function drawNumberOfGroupsChart(value) {
 }
 
 // Диаграмма СВОБОДНЫХ МЕСТ (13 Свободных мест)
-function drawVacantsChart(vacants) {
+function drawVacantsChart(percentage) {
     let ctx = document.querySelector('#vacantsChart').getContext('2d')
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     const shift = -Math.PI / 2
     ctx.lineWidth = 6; // толщина линии
     let startAngle = 0
 
-    if (vacants == null) {
+    if (percentage === null) {
         ctx.beginPath()
         ctx.strokeStyle = '#C4C4C4'
         ctx.arc(25,25,22, shift, 0.0628 * 101 + shift,false);
@@ -411,7 +419,7 @@ function drawVacantsChart(vacants) {
         return
     }
 
-    let value = vacants.occupied / (vacants.total / 100)
+    let value = percentage
     ctx.beginPath()
     ctx.strokeStyle = '#FF455D'
     ctx.arc(25,25,22, startAngle + shift, 0.0628 * value + startAngle + shift,false);
