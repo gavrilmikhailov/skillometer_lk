@@ -44,12 +44,12 @@ html(lang="ru")
                     .content-header
                     .Courses-main
                         .content-title
-                            div Курсы
+                            div=title
                             button.round(onclick="")
                                 img(src="{% static 'assets/your-courses-arrow.svg' %}" alt="")
                         .slider
                             .slides-wrapper(id="slider")
-                                each category in data.courseCategories
+                                each category in courseCategories
                                     a.CourseCategoryCard(style="background: linear-gradient(180deg, #030303 0%, rgba(63, 62, 62, 0) 100%), url('/static/assets/direction_image_{{category.id}}.png') center no-repeat; background-size: cover" onclick="sortCoursesByDirection('{{category.id}}')")
                                         .row
                                             img(src='/static/assets/direction_icon_{{category.id}}.svg' alt="")
@@ -65,33 +65,33 @@ html(lang="ru")
                                         .InfoCourseCard
                                             .row
                                                 div Основной тэг:
-                                                div=data.course.info.mainTag
+                                                div=course.tag
                                             .row
                                                 div Дополнительный тэг:
-                                                div=data.course.info.secondaryTag
+                                                div
                                             .row
                                                 div Возрастная группа:
-                                                div=data.course.info.ageGroup
+                                                div=course.age
                                             .row
                                                 div Формат обучения:
-                                                div=data.course.info.educationFormat
+                                                div
                                             .row
                                                 duv Описание:
-                                                div=data.course.info.description
+                                                div=course.description
                                             .row
                                                 duv Адрес:
-                                                div=data.course.info.address
+                                                div=course.address
                                         .GroupsCourseCard
                                             .left
                                                 .chart-wrapper
-                                                    canvas(width=50 height=50 id="numberOfGroupsChart")
+                                                    canvas(width=50 height=50 id="numberOfGroupsChart" chart=0)
                                                     .sign
                                                 .content
                                                     .date
                                                     .label
                                             .right
                                                 .chart-wrapper
-                                                    canvas(width=50 height=50 id="vacantsChart" chart=33)
+                                                    canvas(width=50 height=50 id="vacantsChart" chart=courseMemberCount)
                                                     .sign
                                                 .content
                                                     .date
@@ -144,7 +144,7 @@ html(lang="ru")
                                                     div 100
                                                     div 50
                                                     div 0
-                                                each month in data.months
+                                                each month in months
                                                     .pillar
                                                         canvas(width=10 height=100)
                                                         .month=month
@@ -175,7 +175,4 @@ html(lang="ru")
                                     button.gray-button.cancel(onclick="deleteModal('close')") Отмена
 //-     div.hidden(id="dataHolder")=data.username
 script(src="{% static 'scripts/courses.js' %}")
-script.
-    parseData("{{data}}")
-
 script(src="{% static 'scripts/index.js' %}")

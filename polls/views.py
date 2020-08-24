@@ -63,231 +63,71 @@ def courses_empty(request):
 
 
 def courses(request, id_category=None, id_course=None):
-    def CompileJSON():
-        res = {
-            "username": "example-mail@gmail.com",
-            "members_notification": 0,
-            "journal_notification": 0,
-            "balance": 9990,
-            "months": ["янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"],
-
-            "courseCategories": [
-                {"title": "Физкультурно-спортивные", "id": 1},
-                {"title": "Естественно-научные", "id": 2},
-                {"title": "Социально-спортивные", "id": 3},
-                {"title": "Инженерные и ИТ", "id": 4},
-                {"title": "Языковые", "id": 5},
-                {"title": "Творчество", "id": 6},
-                {"title": "Предпринимательские", "id": 7},
-            ],
-            "courses": [
-                {
-                    "name": "j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j ",
-                    "rating": 5,
-                    "isEnabled": False,
-                    "id": 452,
-                    "selected": False,
-                    "directionId": 1
-                },
-                {
-                    "name": "Философия",
-                    "rating": 3,
-                    "isEnabled": True,
-                    "selected": True,
-                    "id": 123,
-                    "directionId": 3
-                },
-                {
-                    "name": "Экономика",
-                    "rating": 2,
-                    "isEnabled": False,
-                    "selected": False,
-                    "id": 4,
-                    "directionId": 2
-                },
-                {
-                    "name": "Юриспруденция",
-                    "rating": 1,
-                    "isEnabled": True,
-                    "selected": False,
-                    "id": 56,
-                    "directionId": 6
-                },
-                {
-                    "name": "Физическая культура",
-                    "rating": 1,
-                    "isEnabled": False,
-                    "selected": False,
-                    "id": 53,
-                    "directionId": 6
-                }
-            ],
-            "course": {
-                    "id": 1,
-                    "name": "Философия",
-                    "rating": 5,
-                    "visible": True,
-                    "info": {
-                        "mainTag": "#java",
-                        "secondaryTag": "#программирование",
-                        "ageGroup": "9 – 18",
-                        "category": "Естественно-научные",
-                        "educationFormat": "Онлайн",
-                        "trialLesson": "Есть",
-                        "description": "j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j ",
-                        "address": "г. Якутск, ул. Ленина 1, каб 23"
-                    },
-                    "schedule": [
-                        {
-                            "date": "ЧТ (18:00-20:00)",
-                            "address": "Якутск, ул. Дзержинского 48, к. 128"
-                        },
-                        {
-                            "date": "ПТ (18:00-20:00)",
-                            "address": "Якутск, ул. Ленина 1, к. 223"
-                        },
-                        {
-                            "date": "ПН (18:00-20:00)",
-                            "address": "Якутск, ул. Дзержинского 48, к. 128"
-                        },
-                        {
-                            "date": "ВТ (18:00-20:00)",
-                            "address": "Якутск, ул. Ленина 1, к. 223"
-                        },
-                        {
-                            "date": "СР (18:00-20:00)",
-                            "address": "Якутск, ул. Дзержинского 48, к. 128"
-                        }
-                    ],
-                    "educationPeriod": {
-                        "start": "15.06.2020",
-                        "end": "15.08.2020"
-                    },
-                    "requests": 64,
-                    "numberOfGroups": 4,
-                    "groupsCapacity": 15,
-                    "places": {
-                        "occupied": 4,
-                        "available": 13
-                    },
-                    "charts": {
-                        "geography": [
-                            {
-                                "name": "Якутск",
-                                "value": 4
-                            },
-                            {
-                                "name": "Нерюнгри",
-                                "value": 1
-                            },
-                            {
-                                "name": "Мирный",
-                                "value": 2
-                            },
-                            {
-                                "name": "Алдан",
-                                "value": 3
-                            }
-                        ],
-                        "payments": {
-                            "paid": 23,
-                            "total": 100
-                        },
-                        "groups": 100,
-                        "vacants": {
-                            "occupied": 2,
-                            "total": 15
-                        },
-                        "requests": {
-                            "accepted": 20,
-                            "total": 33
-                        },
-                        "directions": [
-                            {
-                                "name": "Программирование",
-                                "value": 4
-                            },
-                            {
-                                "name": "Веб дизайн",
-                                "value": 1
-                            },
-                            {
-                                "name": "История",
-                                "value": 2
-                            },
-                            {
-                                "name": "Философия",
-                                "value": 3
-                            },
-                        ],
-                        "popularity": [
-                            {
-                                "paid": 7,
-                                "requested": 8,
-                                "total": 10
-                            },
-                            {
-                                "paid": 10,
-                                "requested": 15,
-                                "total": 25
-                            },
-                            {
-                                "paid": 1,
-                                "requested": 2,
-                                "total": 3
-                            },
-                            {
-                                "paid": 7,
-                                "requested": 8,
-                                "total": 10
-                            },
-                            {
-                                "paid": 10,
-                                "requested": 15,
-                                "total": 25
-                            },
-                            {
-                                "paid": 1,
-                                "requested": 2,
-                                "total": 3
-                            },
-                            {
-                                "paid": 7,
-                                "requested": 8,
-                                "total": 10
-                            },
-                            {
-                                "paid": 5,
-                                "requested": 40,
-                                "total": 40
-                            },
-                            {
-                                "paid": 1,
-                                "requested": 2,
-                                "total": 3
-                            },
-                            {
-                                "paid": 0,
-                                "requested": 0,
-                                "total": 10
-                            },
-                            {
-                                "paid": 10,
-                                "requested": 15,
-                                "total": 25
-                            },
-                            {
-                                "paid": 1,
-                                "requested": 2,
-                                "total": 3
-                            }
-                        ],
-                    }
-                },
+    title = "Курсы"
+    organizationAddress = "Вот эта улица"
+    user = {"email": "test@test.te", }
+    course = {
+        "name": "Rocket Science",
+        "tag": "#someTag",
+        "age": "50-55",
+        "speciality": {"id": 12, "name": "Языковые", },
+        "description": "Какое то описание",
+        "address": "Вот этот дом",
+    }
+    courses = [
+        {
+            "name": "j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j j J j J j J j j j j j j j j j j j j j ",
+            "rating": 5,
+            "isEnabled": False,
+            "id": 452,
+            "selected": False,
+            "directionId": 1
+        },
+        {
+            "name": "Философия",
+            "rating": 3,
+            "isEnabled": True,
+            "selected": True,
+            "id": 123,
+            "directionId": 3
+        },
+        {
+            "name": "Экономика",
+            "rating": 2,
+            "isEnabled": False,
+            "selected": False,
+            "id": 4,
+            "directionId": 2
+        },
+        {
+            "name": "Юриспруденция",
+            "rating": 1,
+            "isEnabled": True,
+            "selected": False,
+            "id": 56,
+            "directionId": 6
+        },
+        {
+            "name": "Физическая культура",
+            "rating": 1,
+            "isEnabled": False,
+            "selected": False,
+            "id": 53,
+            "directionId": 6
         }
-        return (res)
-    # title = data if cond else expr2
-    data = CompileJSON()
+    ]
+    courseCategories = [
+        {"title": "Физкультурно-спортивные", "id": 1},
+        {"title": "Естественно-научные", "id": 2},
+        {"title": "Социально-спортивные", "id": 3},
+        {"title": "Инженерные и ИТ", "id": 4},
+        {"title": "Языковые", "id": 5},
+        {"title": "Творчество", "id": 6},
+        {"title": "Предпринимательские", "id": 7},
+    ]
+    courseMemberCount = 0
+    months = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
+
     return (render(request, "polls/courses-main.pug", locals()))
 
 

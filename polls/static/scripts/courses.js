@@ -5,9 +5,10 @@ function coursesMainFirstResponder() {
 
     let paymentsPercentage = document.querySelector('#paymentsChart').getAttribute('chart')
     let vacantsPercentage = document.querySelector('#vacantsChart').getAttribute('chart')
-
+    let numberOfGroupsPercentage = document.querySelector('#numberOfGroupsChart').getAttribute('chart')
     drawPaymentsChart(paymentsPercentage)
     drawVacantsChart(vacantsPercentage)
+    drawNumberOfGroupsChart(numberOfGroupsPercentage)
 }
 
 // Для перетасовки карт на < (1600х900)
@@ -39,7 +40,7 @@ function resizePanel() {
     document.querySelector('.panel').style.height = `${document.querySelector('.content-window').scrollHeight}px`
 }
 
-
+/*
 function parseData(data) {
     while (data.includes('&#x27;')) {
         data = data.replace('&#x27;', '\"')
@@ -49,7 +50,7 @@ function parseData(data) {
     let newData = JSON.parse(data)
     selectCourse(newData.courses)
 }
-
+*/
 
 // Выбор курса на правой панели
 function selectCourse(courses) {
