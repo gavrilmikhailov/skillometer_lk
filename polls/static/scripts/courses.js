@@ -13,7 +13,7 @@ function coursesMainFirstResponder() {
 
 // Для перетасовки карт на < (1600х900)
 function screenMediaHandler() {
-    // arrange cards on screen resize
+    // arrange cards on screen resiz e
 
     let geographyCard = document.querySelector('.GeographyCard')
     let groupsCard = document.querySelector('.GroupsCourseCard')
