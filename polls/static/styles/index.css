@@ -1375,6 +1375,7 @@ img {
   justify-content: space-between;
 }
 .YourCourses .courses-item p {
+  color: white;
   max-width: 200px;
   text-overflow: ellipsis;
   overflow: hidden;
