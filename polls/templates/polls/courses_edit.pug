@@ -7,6 +7,9 @@ html(lang="ru")
         meta(name="viewport" content="width=device-width")
         link(rel="icon" type="image/png" href="{% static 'assets/favicon.png' %}")
         link(rel="stylesheet" href="{% static 'styles/index.css' %}")
+        link(rel="stylesheet" href="https://snipp.ru/cdn/jqueryui/1.12.1/jquery-ui.min.css")
+        link(rel="stylesheet" href="https://snipp.ru/cdn/jQuery-Timepicker-Addon/dist/jquery-ui-timepicker-addon.min.css")
+
         script(src="{% static 'scripts/icons.js' %}" type="text/javascript" charset="utf-8")
     body
         .container
@@ -49,48 +52,41 @@ html(lang="ru")
                             .column-1
                                 .row
                                     img.direction-icon.hidden(src="{% static 'assets/direction_icon_1.svg' %}")
-                                    input(type="text" placeholder="Выберите направление деятельности" id="dropdownTF" readonly=True value="{{data.direction}}")
-                                    button.dropdown-button(onClick="toggleDropdown('courses1')" id="dropdownButton")
-                                        img(src="{% static 'assets/dropdown_icon_down.svg' %}")
-                                    .dropdown-list-closed(id="dropdownList")
-                                        div Выберите направление деятельности
-                                        each value, index in data.directions
-                                            button.dropdown-item(onClick="selectDropdownItem('{{index}}', '{{value}}', 'courses1')")=value
+                                    .custom-select(style="width:100%;")
+                                        select
+                                            option Выберите направление деятельности
+                                            option Естественно-научные
+                                            option(value="2") Инженерные и ИТ
+                                            option(value="3") Предпринимательские
+                                            option(value="4") Социально-общественные
+                                            option(value="5") Творчество
+                                            option(value="6") Физкультурно-спортивные
+                                            option(value="7") Языковые
 
                                 input(type="text" placeholder="Ключевое слово, отражающее скилл (тэг):" id="tagTF" value="{{data.tag}}")
                                 input(type="text" placeholder="Название" id="nameTF" value="{{data.name}}")
                                 .age-block
-                                    .row
-                                        img.direction-icon(src="")
-                                        input(type="text" placeholder="Возрастная группа" id="ageDropdownTF" readonly=True value="{{data.ageGroup}}")
-                                        button.dropdown-button(onClick="toggleDropdown('courses2')" id="ageDropdownButton")
-                                            img(src="{% static 'assets/dropdown_icon_down.svg' %}")
-                                        .dropdown-list-closed(id="ageDropdownList")
-                                            div Возрастная группа
-                                            button.dropdown-item(onClick="selectDropdownItem(0, 0, 'courses2')")="Для школьников"
-                                            button.dropdown-item(onClick="selectDropdownItem(1, 1, 'courses2')")="Для взрослых"
-
+                                    .custom-select(style="width:100%;")
+                                        select
+                                            option Возрастная группа
+                                            option Для школьников
+                                            option Для взрослых
                                     input.age-group(type="text" placeholder="15-17" id="ageTF" value="{{data.ageGroupNumbers}}")
                                 textarea(type="text" placeholder="Описание" id="descriptionTF")=data.description
                             .column-2
                                 div
                                     .date-picker-block
                                         .date-picker-label Дата начала
-                                        input.date-picker(type="date" placeholder="дд.мм.гггг" id="begin-date" value="{{data.beginDate}}")
+                                        input.date-picker(type="text" id="datepicker1")
                                     .date-picker-block
                                         .date-picker-label Дата окончания
-                                        input.date-picker(type="date" placeholder="дд.мм.гггг" id="end-date" value="{{data.endDate}}")
+                                        input(type="text" id="datepicker2")
                                     .row
-                                        img.direction-icon(src="")
-                                        input(type="text" placeholder="Адрес" id="addressDropdownTF" value="{{data.address}}")
-                                        button.dropdown-button(onClick="toggleDropdown('courses3')" id="addressDropdownButton")
-                                            img(src="{% static 'assets/dropdown_icon_down.svg' %}")
-                                        .dropdown-list-closed(id="addressDropdownList")
-                                            div Выберите адрес
-                                            if data.addresses
-                                                each address, index in data.addresses
-                                                    button.dropdown-item(onClick="selectDropdownItem({{index}}, '{{address}}', 'courses3')")=address
-
+                                        .custom-select(style="width:100%;")
+                                            select
+                                                option Адрес
+                                                option Доступный адрес №1
+                                                option Еще один адрес
                                     div(id="selected-image")
                                         if data.images
                                             each imageSrc in data.images
@@ -103,5 +99,11 @@ html(lang="ru")
                                     button.red-button(onclick="submitNewCourse()") Далее
                                     button.gray-button Назад
 
-    script(src="{% static 'scripts/courses_edit.js' %}")
-    script(src="{% static 'scripts/index.js' %}")
+        script(src="{% static 'scripts/courses_edit.js' %}")
+        script(src="{% static 'scripts/index.js' %}")
+        script(src="{% static 'scripts/custom-select.js' %}")
+
+        script(src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js")
+        script(src="https://snipp.ru/cdn/jqueryui/1.12.1/jquery-ui.min.js")
+        script(src="https://snipp.ru/cdn/jQuery-Timepicker-Addon/dist/jquery-ui-timepicker-addon.min.js")
+        script(src="{% static 'scripts/datepicker.js' %}")
