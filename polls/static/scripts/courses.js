@@ -302,14 +302,18 @@ window.onresize = screenMediaHandler
 screenMediaHandler()
 
 // Диаграмма ГЕОГРАФИЯ (Охват учащихся)
-function drawGeographyChart(dataArray) {
+function drawGeographyChart() {
     let ctx = document.querySelector('#geographyChart').getContext('2d')
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     let shift = -Math.PI / 2
     ctx.lineWidth = 17; // толщина линии
     let startAngle = 0
 
-    if (dataArray === null || dataArray === undefined) return
+    let dataArray = document.querySelectorAll('.chart-item .rect')
+    dataArray.forEach(item => {
+
+    })
+
     let colors = ['#FF455D', '#BB7CF5', '#05CDE1', '#FFD101']
     dataArray.forEach((item, index) => {
         let i = index
@@ -337,13 +341,6 @@ function drawGeographyChart(dataArray) {
         ctx.arc(100,100,90, startAngle + shift, 0.0628 * percentageValues[i] + startAngle + shift,false);
         ctx.stroke();
         startAngle = 0.0628 * percentageValues[i] + startAngle
-
-        let newItem = document.createElement('div')
-        newItem.className = 'chart-item'
-        let innerText = `${dataArray[i].name} ${percentageValues[i].toFixed(0)} %`
-        newItem.innerHTML = `<div class="rect" style="background: ${dataArray[i].color}"></div><div class="name">${innerText}</div>`
-
-        dataWrapper.appendChild(newItem)
     }
 }
 
