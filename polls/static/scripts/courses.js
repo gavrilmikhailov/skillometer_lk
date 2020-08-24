@@ -2,13 +2,19 @@
 let observedCourseIndex = 0
 
 function coursesMainFirstResponder() {
+    let payments
+    let vacants
+    let groups
 
-    let paymentsPercentage = document.querySelector('#paymentsChart').getAttribute('chart')
-    let vacantsPercentage = document.querySelector('#vacantsChart').getAttribute('chart')
-    let numberOfGroupsPercentage = document.querySelector('#numberOfGroupsChart').getAttribute('chart')
-    drawPaymentsChart(paymentsPercentage)
-    drawVacantsChart(vacantsPercentage)
-    drawNumberOfGroupsChart(numberOfGroupsPercentage)
+    let paymentsPercentage = document.querySelector('#paymentsChart')
+    if (paymentsPercentage !== null) payments = paymentsPercentage.getAttribute('chart')
+    let vacantsPercentage = document.querySelector('#vacantsChart')
+    if (vacantsPercentage !== null) vacants = vacantsPercentage.getAttribute('chart')
+    let numberOfGroupsPercentage = document.querySelector('#numberOfGroupsChart')
+    if (numberOfGroupsPercentage !== null) groups = numberOfGroupsPercentage.getAttribute('chart')
+    drawPaymentsChart(payments)
+    drawVacantsChart(vacants)
+    drawNumberOfGroupsChart(groups)
 }
 
 // Для перетасовки карт на < (1600х900)
