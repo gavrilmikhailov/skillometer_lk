@@ -35,7 +35,7 @@ $.timepicker.regional['ru'] = {
 $.timepicker.setDefaults($.timepicker.regional['ru']);
 
 $(function(){
-	$("#datepicker1").datepicker();
-	$("#datepicker2").datepicker();
+	$(".unique-datepicker-1").datepicker();
+	$(".unique-datepicker-2").datepicker();
    	// $("#datepicker").datepicker("show");
 });
