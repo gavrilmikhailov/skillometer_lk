@@ -25,6 +25,8 @@ function submitNewCourse() {
 function openFileInput() {
     let input = document.querySelector('#image-input')
     input.click()
+    let offset = new Date().getTimezoneOffset()
+	console.log(offset)
 }
 
 // Загрузка изображения курса
