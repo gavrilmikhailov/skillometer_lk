@@ -3332,8 +3332,7 @@ img {
   color: #494949;
 }
 .Activity-edit input, .Activity-edit #id_text {
-  width: 100%;
-  max-width: 856px;
+  width: 65%;
   max-height: 233px;
 }
 .Activity-edit .column {
