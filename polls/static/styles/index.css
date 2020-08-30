@@ -91,7 +91,7 @@ button, input[type=submit], input[type=reset] {
   outline: inherit;
 }
 
-input[type=text], textarea {
+input[type=text], input[type=url], textarea {
   padding: 20px 30px;
   position: relative;
   outline: none;
@@ -109,7 +109,7 @@ input[type=text], textarea {
   text-overflow: ellipsis;
   resize: none;
 }
-input[type=text]::placeholder, textarea::placeholder {
+input[type=text]::placeholder, input[type=url]::placeholder, textarea::placeholder {
   color: #9E9E9E;
 }
 
@@ -497,10 +497,6 @@ img {
   color: #9E9E9E;
   font-size: 24px;
   line-height: 34px;
-}
-.Courses-edit #datepicker1, .Courses-edit #datepicker2 {
-  width: 250px;
-  text-align: center;
 }
 .Courses-edit .date-picker {
   padding: 20px 30px;
@@ -3295,6 +3291,104 @@ img {
 }
 .profileView .close-button img {
   height: 100%;
+}
+
+.Activity-edit {
+  display: flex;
+  width: 100%;
+  max-width: 1375px;
+  flex-direction: column;
+  align-items: center;
+}
+.Activity-edit .form-block {
+  width: 100%;
+  background: #FAF8F8;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 62px 64px 72px 70px;
+}
+.Activity-edit .form-block > :nth-child(3) {
+  align-items: flex-start;
+}
+.Activity-edit p, .Activity-edit .row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.Activity-edit p label, .Activity-edit .row label {
+  font-size: 24px;
+  line-height: 141.5%;
+  color: #9E9E9E;
+}
+.Activity-edit p .title, .Activity-edit .row .title {
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 141.5%;
+  color: #494949;
+}
+.Activity-edit input, .Activity-edit #id_text {
+  width: 100%;
+  max-width: 856px;
+  max-height: 233px;
+}
+.Activity-edit .column {
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.Activity-edit .column > :last-child {
+  width: 300px;
+}
+.Activity-edit .buttons-block {
+  font-family: "PT Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 27px;
+  line-height: 35px;
+  color: #fff;
+  display: flex;
+}
+.Activity-edit .buttons-block > :first-child {
+  transition: all 100ms ease-in;
+  width: 216px;
+  height: 64px;
+  background: #FF455D;
+  border-radius: 41px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.Activity-edit .buttons-block > :first-child:active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+.Activity-edit .buttons-block > :last-child {
+  transition: all 100ms ease-in;
+  text-decoration: none;
+  color: #fff;
+  margin-left: 34px;
+  width: 216px;
+  height: 64px;
+  background: #9E9E9E;
+  border-radius: 41px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.Activity-edit .buttons-block > :last-child:active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+.Activity-edit .datepicker1, .Activity-edit .datepicker2 {
+  margin-top: 20px;
+  width: 300px;
+  max-height: 56px;
+  text-align: center;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -557,7 +557,12 @@ def courses_upload_files(request):
     return (render(request, "polls/courses_upload_files.pug", locals()))
 
 
+def activity_edit(request):
+    return (render(request, "polls/activity_edit.pug"))
+
+
 def current_datetime(request):
     now = datetime.datetime.now()
     html = "<html><body>It is now %s.</body></html>" % now
     return HttpResponse(html)
+

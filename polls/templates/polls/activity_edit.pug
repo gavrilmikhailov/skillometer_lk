@@ -1,0 +1,97 @@
+html(lang='ru')
+    head
+        meta(charset='UTF-8')
+        title Skillometer - Добавление активности
+        meta(name='viewport', content='width=device-width')
+        link(rel='icon', type='image/png', href='/static/assets/favicon.png')
+        link(rel='stylesheet', href='/static/styles/index.css')
+        script(src='/static/scripts/icons.js')
+        script(src='/static/scripts/courses_edit.js')
+        link(rel='stylesheet', href='https://snipp.ru/cdn/jqueryui/1.12.1/jquery-ui.min.css')
+        link(rel='stylesheet', href='https://snipp.ru/cdn/jQuery-Timepicker-Addon/dist/jquery-ui-timepicker-addon.min.css')
+    body
+        .container
+            .header
+                a.logo(href='https://skillometer.ru')
+                    img(src='/static/assets/logo.svg')
+                .user-block
+                    img.notification-icon(src='/static/assets/notification_bell.svg')
+                    a(href='')
+                        img.user-icon(src='/static/assets/teacher_user_icon.svg')
+                    .user-info
+                        .user-name test@test.te
+                        .balance
+                            | Баланс:   
+                            b  0 ₽
+        .panel
+            .panel-actions
+                a.panel-button(href='/courses/')
+                    img(src='/static/assets/icon_courses.svg')
+                a.panel-button(href='')
+                    img(src='/static/assets/icon_webinar.svg')
+                a.panel-button(href='/organization/')
+                    img(src='/static/assets/icon_community.svg')
+                a.panel-button.notification-holder(href='/quest_members/')
+                    img(src='/static/assets/icon_users.svg')
+                a.panel-button.notification-holder.selected(href='/festivals_new/')
+                    img(src='/static/assets/icon_board.svg')
+            a.panel-button(href='/logout/')
+                img(src='/static/assets/icon_exit.svg')
+        .center
+            .container
+                .content-window
+                    .content-header
+                    .Activity-edit
+                        .content-title
+                            div Курсы
+                        form.form-block(method='POST', enctype='multipart/form-data')
+                            input(type='hidden', name='csrfmiddlewaretoken', value='TM7kT06NzzYstFLaJGCgPGeFB4iJJlbT1bHeGtqq19GZOXcmskLqCtswHEQMtHns')
+                            p
+                                label.title(for='id_title') Заголовок активности:
+                                input#id_title(type='text', name='title', value='njnjn', maxlength='256', required='')
+                            .row
+                                .column
+                                    label.title(for='id_text') Текст активности:
+                                    div
+                                        input#id_dateEnabled.datepicker1(type='text', name='dateEnabled', value='17.08.2020 15:20:00', required='')
+                                        input#id_dateDisabled.datepicker2(type='text', name='dateDisabled', value='31.08.2020 15:20:00', required='')
+                                textarea#id_text(name='text', cols='40', rows='10', required='') tst
+                            p
+                                label(for='id_youtube') Ссылка на youtube:
+                                input#id_youtube(type='url', name='youtube', value='https://youtube.com', maxlength='200')
+                                input#id_festival(type='hidden', name='festival', value='2')
+                            input#id_urls-TOTAL_FORMS(type='hidden', name='urls-TOTAL_FORMS', value='1')
+                            input#id_urls-INITIAL_FORMS(type='hidden', name='urls-INITIAL_FORMS', value='0')
+                            input#id_urls-MIN_NUM_FORMS(type='hidden', name='urls-MIN_NUM_FORMS', value='0')
+                            input#id_urls-MAX_NUM_FORMS(type='hidden', name='urls-MAX_NUM_FORMS', value='1000')
+                            p
+                                label(for='id_urls-0-url') Добавить ссылку теории:
+                                input#id_urls-0-url(type='url', name='urls-0-url', maxlength='200')
+                                input#id_urls-0-id(type='hidden', name='urls-0-id')
+                            input#id_form-TOTAL_FORMS(type='hidden', name='form-TOTAL_FORMS', value='2')
+                            input#id_form-INITIAL_FORMS(type='hidden', name='form-INITIAL_FORMS', value='1')
+                            input#id_form-MIN_NUM_FORMS(type='hidden', name='form-MIN_NUM_FORMS', value='0')
+                            input#id_form-MAX_NUM_FORMS(type='hidden', name='form-MAX_NUM_FORMS', value='1000')
+                            p
+                                label(for='id_form-0-image') Картинка теории:
+                                |  На данный момент:
+                                a(href='/media/images/activities/ec554a7fbd584ab29247042e51d96b73.png') images/activities/ec554a7fbd584ab29247042e51d96b73.png
+                                br
+                                | Изменить:
+                                input#id_form-0-image(type='file', name='form-0-image', accept='image/*')
+                                input#id_form-0-id(type='hidden', name='form-0-id', value='1')
+                            p
+                                label(for='id_form-1-image') Картинка теории:
+                                input#id_form-1-image(type='file', name='form-1-image', accept='image/*')
+                                input#id_form-1-id(type='hidden', name='form-1-id')
+                            div.buttons-block
+                                button(type="submit") Готово
+                                a(href="") Отмена
+        script(src='https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js')
+        script(src='https://snipp.ru/cdn/jqueryui/1.12.1/jquery-ui.min.js')
+        script(src='https://snipp.ru/cdn/jQuery-Timepicker-Addon/dist/jquery-ui-timepicker-addon.min.js')
+        script(src='/static/scripts/datepicker.js')
+        script(src='/static/scripts/image-picker.js')
+        script(src='/static/scripts/courses_edit.js')
+        script(src='/static/scripts/custom-select.js')
+        script(src='/static/scripts/index.js')
