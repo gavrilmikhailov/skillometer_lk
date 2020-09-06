@@ -16,7 +16,9 @@ urlpatterns = [
     path('courses_upload_files/', views.courses_upload_files, name='course_upload_files'),
     path('answer_detail/', views.answer_detail, name="answer_detail"),
     path('test/', views.test, name="test"),
-    path('activity_edit', views.activity_edit, name="activity_edit")
+    path('activity_edit', views.activity_edit, name="activity_edit"),
+    path('', views.authorization_page, name="authorization_page"),
+    path('register/', views.registration_page, name="registration_page")
 ]
 
 # {% url 'festivals' %}

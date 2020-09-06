@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
 *,
 *::before,
 *::after {
@@ -196,7 +196,6 @@ input[type=date] {
 }
 
 body {
-  min-width: 1366px;
   margin: 0 auto;
   font-family: "Arimo", sans-serif;
   color: var(--black);
@@ -3388,6 +3387,176 @@ img {
   width: 300px;
   max-height: 56px;
   text-align: center;
+}
+
+.authorization-form, .registration-form {
+  width: 100%;
+  height: 100%;
+}
+.authorization-form .form-window, .registration-form .form-window {
+  width: 1000px;
+  height: 650px;
+  background: #FAF8F8;
+  border-radius: 41px;
+  display: flex;
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+}
+.authorization-form .form-window .left, .registration-form .form-window .left {
+  flex-basis: 50%;
+  height: 100%;
+  background: radial-gradient(47.86% 53.17% at 86.31% 38.5%, #F57485 0%, #EF485F 100%);
+  border-top-left-radius: 41px;
+  border-bottom-left-radius: 41px;
+  padding: 50px 38px 38px 47px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.authorization-form .form-window .left .title, .registration-form .form-window .left .title {
+  font-family: "PT Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 47px;
+  color: white;
+}
+.authorization-form .form-window .right, .registration-form .form-window .right {
+  flex-basis: 50%;
+  height: 100%;
+  border-top-right-radius: 41px;
+  border-bottom-right-radius: 41px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 54.52px 43px 53px;
+}
+.authorization-form .form-window .right .title, .registration-form .form-window .right .title {
+  font-family: "PT Sans", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 47px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #494949;
+}
+.authorization-form .form-window .right .input-block label, .registration-form .form-window .right .input-block label {
+  font-family: "Arimo", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 141.5%;
+  color: #9E9E9E;
+}
+.authorization-form .form-window .right .input-block input, .registration-form .form-window .right .input-block input {
+  width: 100%;
+  height: 64px;
+  margin-top: 5px;
+}
+.authorization-form .form-window .right .sign-button, .registration-form .form-window .right .sign-button {
+  background: var(--red);
+  border-radius: 41px;
+  width: 252px;
+  height: 64px;
+  color: white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: "PT Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 27px;
+  line-height: 35px;
+}
+.authorization-form .form-window .right .sign-button:hover, .registration-form .form-window .right .sign-button:hover {
+  box-shadow: none;
+}
+.authorization-form .form-window .right .sign-button:active, .registration-form .form-window .right .sign-button:active {
+  box-shadow: none;
+  transform: scale(0.98);
+}
+.authorization-form .form-window .right .forgot-link, .registration-form .form-window .right .forgot-link {
+  font-family: "Arimo", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 141.5%;
+  color: var(--red);
+}
+.authorization-form .form-window .right .forgot-link:hover, .registration-form .form-window .right .forgot-link:hover {
+  opacity: 0.6;
+}
+.authorization-form .form-window .right > :nth-child(2), .registration-form .form-window .right > :nth-child(2) {
+  margin-top: 12px;
+}
+.authorization-form .form-window .right > :nth-child(3), .registration-form .form-window .right > :nth-child(3) {
+  margin-top: 18px;
+}
+.authorization-form .form-window .right > :nth-child(4), .registration-form .form-window .right > :nth-child(4) {
+  margin-top: 56px;
+}
+.authorization-form .form-window .right > :nth-child(5), .registration-form .form-window .right > :nth-child(5) {
+  margin-top: 18px;
+}
+.authorization-form .form-window .right > :nth-child(6), .registration-form .form-window .right > :nth-child(6) {
+  margin-top: 28px;
+}
+
+.registration-form .form-window {
+  height: 734px;
+}
+.registration-form .form-window .right {
+  padding: 50px 54.52px 34px 53px;
+}
+.registration-form .form-window .right .checkbox-block {
+  display: flex;
+}
+.registration-form .form-window .right .checkbox-block input[type=checkbox] {
+  width: 25px;
+  height: 25px;
+}
+.registration-form .form-window .right .checkbox-block label {
+  margin-left: 13px;
+  max-width: 338px;
+  font-family: "Arimo", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 141.5%;
+  color: #9E9E9E;
+}
+.registration-form .form-window .right .checkbox-block label a {
+  color: #2F80ED;
+}
+.registration-form .form-window .right .checkbox-block label a:hover {
+  opacity: 0.6;
+}
+.registration-form .form-window .right .forgot-link {
+  font-family: "Arimo", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 141.5%;
+  color: #9E9E9E;
+}
+.registration-form .form-window .right .forgot-link:hover {
+  opacity: 0.6;
+}
+.registration-form .form-window .right > :nth-child(2) {
+  margin-top: 20px;
+}
+.registration-form .form-window .right > :nth-child(3) {
+  margin-top: 18px;
+}
+.registration-form .form-window .right > :nth-child(4) {
+  margin-top: 18px;
+}
+.registration-form .form-window .right > :nth-child(5) {
+  margin-top: 48px;
+}
+.registration-form .form-window .right > :nth-child(6) {
+  margin-top: 18px;
+}
+.registration-form .form-window .right > :nth-child(7) {
+  margin-top: 29px;
 }
 
 /*# sourceMappingURL=index.css.map */

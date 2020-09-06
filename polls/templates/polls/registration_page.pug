@@ -1,0 +1,30 @@
+html(lang='ru')
+    head
+        meta(charset='UTF-8')
+        title Skillometer - Вход
+        meta(name='viewport', content='width=device-width')
+        link(rel='icon', type='image/png', href='/static/assets/favicon.png')
+        link(rel='stylesheet', href='/static/styles/index.css')
+    body
+        .registration-form.center
+            form(method="POST")
+                .form-window
+                    .left
+                        .title
+                            p Зарегистрируйтесь для
+                            p доступа в личный кабинет
+                        img(src="/static/assets/sign-up-background.png")
+                    .right
+                        .title РЕГИСТРАЦИЯ
+                        .input-block
+                            label Электронная почта
+                            input(type="text")
+                        .input-block
+                            label Пароль
+                            input(type="text")
+                        .checkbox-block
+                            input(type="checkbox")
+                            label Я соглашаюсь с <a href="">политикой конфиденциальности</a> и <a href="">договором оферты</a>
+                        button.sign-button.center(type="submit") Регистрация
+                        button.sign-button.center(type="submit") Войти
+                        a.forgot-link.center(href="") На главную

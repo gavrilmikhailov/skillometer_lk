@@ -566,3 +566,10 @@ def current_datetime(request):
     html = "<html><body>It is now %s.</body></html>" % now
     return HttpResponse(html)
 
+
+def authorization_page(request):
+    return render(request, "polls/authorization_page.pug")
+
+
+def registration_page(request):
+    return render(request, "polls/registration_page.pug")
